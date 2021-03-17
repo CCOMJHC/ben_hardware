@@ -1,7 +1,7 @@
 <launch>
     <arg name="namespace" default="ben"/>
     <arg name="operator_ip" default="192.168.100.199"/>
-    <rosparam command="load" file="$(find ben_hardware)/parameters/ben.yaml" ns="$(arg namespace)"/>
+    <rosparam command="load" file="$(find ben_hardware)/config/ben.yaml" ns="$(arg namespace)"/>
     
     <include file="$(find project11)/launch/vehicle_core.launch">
         <arg name="host" value="$(arg operator_ip)"/>
@@ -36,10 +36,6 @@
     </include>
     
     <node pkg="mbr" type="mbr_node.py" name="mbr_node" ns="$(arg namespace)"/>
-
-    <include file="$(find ben_hardware)/launch/all_panos.launch">
-        <arg name="namespace" value="$(arg namespace)"/>
-    </include>
 
     <include file="$(find ben_hardware)/launch/loggers.launch">
         <arg name="namespace" value="$(arg namespace)"/>

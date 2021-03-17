@@ -1,0 +1,8 @@
+<launch>
+    <arg name="namespace" default="ben"/>
+
+    <include file="$(find ben_hardware)/launch/all_panos.launch">
+        <arg name="namespace" value="$(arg namespace)"/>
+    </include>
+
+</launch>

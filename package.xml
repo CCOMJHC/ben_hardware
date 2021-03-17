@@ -13,7 +13,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <exec_depend>video_stream_opencv</exec_depend>
-  <exec_depend>project11</exec_depend>
+  <exec_depend>project11_robot</exec_depend>
   <exec_depend>cw4_helm</exec_depend>
   <exec_depend>control_by_web_x4xx_interface</exec_depend>
   <exec_depend>flir</exec_depend>
