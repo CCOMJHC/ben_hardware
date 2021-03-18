@@ -37,5 +37,5 @@ export ROS_IP=192.168.100.112
 set -v
 
 {
-/home/field/project11/catkin_ws/ben_hardware/scripts/start_tmux_mystique.sh
+/home/field/project11/catkin_ws/src/ben_hardware/scripts/start_tmux_mystique.sh
 } &>> ${LOG_FILE}
