@@ -1,9 +1,10 @@
 <launch>
-    <node pkg="rosbag" type="record" name="VLP16_logger" args="-o $(find project11)/logs/VLP16 --split --duration=1h --lz4 /velodyne_points" />
+  <arg name="namespace"/>
+  <node pkg="rosbag" type="record" name="VLP16_logger" args="-o $(find project11)/logs/VLP16 --split --duration=1h --lz4 /velodyne_points" ns="$(arg namespace)"/>
 
-    <node pkg="rosbag" type="record" name="AIS_logger" args="-o $(find project11)/logs/AIS --split --duration=1h /contact" />
-    <node pkg="rosbag" type="record" name="radar_logger" args="-o $(find project11)/logs/radar --split --duration=1h -j /radar /heading /position /posmv/orientation /posmv/position /posmv/time_reference" />
-    <node pkg="rosbag" type="record" name="base_logger" args="-o $(find project11)/logs/base --split --duration=1h
+  <node pkg="rosbag" type="record" name="AIS_logger" args="-o $(find project11)/logs/AIS --split --duration=1h /contact"  ns="$(arg namespace)"/>
+  <node pkg="rosbag" type="record" name="radar_logger" args="-o $(find project11)/logs/radar --split --duration=1h -j /radar /heading /position /posmv/orientation /posmv/position /posmv/time_reference"  ns="$(arg namespace)"/>
+  <node pkg="rosbag" type="record" name="base_logger"  ns="$(arg namespace)" args="-o $(find project11)/logs/base --split --duration=1h
         /cmd_vel
         /contact
         /control/drive/direct

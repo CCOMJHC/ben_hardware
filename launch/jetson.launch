@@ -4,5 +4,17 @@
     <include file="$(find ben_hardware)/launch/all_panos.launch">
         <arg name="namespace" value="$(arg namespace)"/>
     </include>
+    
+    <include file="$(find ben_hardware)/launch/camera_color.launch">
+        <arg name="namespace" value="$(arg namespace)"/>
+    </include>
+
+    <include file="$(find ben_hardware)/launch/camera_flir.launch">
+        <arg name="namespace" value="$(arg namespace)"/>
+    </include>
+
+    <include file="$(find ben_hardware)/launch/camera_flir_engine.launch">
+        <arg name="namespace" value="$(arg namespace)"/>
+    </include>
 
 </launch>

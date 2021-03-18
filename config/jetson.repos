@@ -1,0 +1,17 @@
+repositories:
+  ben_hardware:
+    type: git
+    url: http://penguinc/roland/ben_hardware
+    version: noetic
+  ccomjhc_project11:
+    type: git
+    url: http://192.168.100.199/roland/ccomjhc_project11.git
+    version: noetic
+  darknet_ros_msgs:
+    type: git
+    url: http://penguinc/roland/darknet_ros_msgs.git
+    version: noetic
+  opencv_dnn:
+    type: git
+    url: http://penguinc/roland/opencv_dnn.git
+    version: noetic
