@@ -37,5 +37,5 @@ export ROS_MASTER_URI=http://192.168.100.112:11311
 set -v
 
 {
-/home/field/project11/scripts/start_tmux_jetson.sh
+/home/field/project11/catkin_ws/ben_hardware/scripts/start_tmux_jetson.sh
 } &>> ${LOG_FILE}
