@@ -16,14 +16,14 @@
       <remap from="radar" to="sensors/radar"/>
       <param name="frameId" value="($arg namespace)/radar"/>
     </node>
-    <node pkg="posmv" type="posmv_node.py" name="posmv" ns="$(arg namespace)"/>
+    <node pkg="posmv" type="posmv_node.py" name="posmv" ns="$(arg namespace)/sensors"/>
     <!--node pkg="radar_obstacle_detection" type="radar_obstacle_detection_node.py" name="radar_obstacle_detection"/-->
     <!--node pkg="kongsberg_em_control" type="kongsberg_em_control_node.py" name="kongsberg_em_control"/-->
     <!--node pkg="kongsberg_em" type="kongsberg_em_node.py" name="kongsberg_em"/-->
 
     <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar">
       <arg name="frame_id" value="$(arg namespace)/lidar"/>
-      <arg name="manager" value="$(arg namespace)_lidar_nodelet_manager"/>
+      <arg name="manager" value="lidar_nodelet_manager"/>
       <remap from="velodyne_points" to="points"/>
     </include>
     
@@ -32,6 +32,11 @@
     <include file="$(find ben_hardware)/launch/loggers.launch">
         <arg name="namespace" value="$(arg namespace)"/>
     </include>
+    
+    <node pkg="kongsberg_em_driver" type="kongsberg_em_node" name="kongsberg_2040" output="screen">
+        <rosparam command="load" file="$(find ben_hardware)/config/kongsberg_2040.yaml"/>
+    </node>
+
     
     <node pkg="nmea_navsat_driver" type="nmea_topic_serial_reader" name="nmea_reader" ns="$(arg namespace)">
       <param name="port" value="/dev/ttyACM0"/>

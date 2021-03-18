@@ -1,9 +1,24 @@
 <launch>
   <arg name="namespace"/>
-  <node pkg="rosbag" type="record" name="VLP16_logger" args="-o $(find project11)/logs/VLP16 --split --duration=1h --lz4 /velodyne_points" ns="$(arg namespace)"/>
 
-  <node pkg="rosbag" type="record" name="AIS_logger" args="-o $(find project11)/logs/AIS --split --duration=1h /contact"  ns="$(arg namespace)"/>
-  <node pkg="rosbag" type="record" name="radar_logger" args="-o $(find project11)/logs/radar --split --duration=1h -j /radar /heading /position /posmv/orientation /posmv/position /posmv/time_reference"  ns="$(arg namespace)"/>
+  <node pkg="rosbag" type="record" name="cw4_logger" ns="$(arg namespace)" args="-o $(find project11)/logs/cw4 --split --duration=1h
+        /sensor/ais/contact
+        /link_status
+        /sensor/vehicle/drive
+        /sensor/vehicle/engine
+        /sensor/vehicle/heading
+        /sensor/vehicle/pose
+        /sensor/vehicle/position
+        /sensor/vehicle/timeref
+        /vehicle_status
+        /control/drive/direct
+        /control/drive/heading_hold
+        /control/drive/inhibit
+        /control/drive/seek_position
+        /control/drive/virtual
+        /scm/vehicle/depth
+        "/>
+  
   <node pkg="rosbag" type="record" name="base_logger"  ns="$(arg namespace)" args="-o $(find project11)/logs/base --split --duration=1h
         /cmd_vel
         /contact
@@ -66,4 +81,15 @@
         /sog
         /vehicle_status
         " />
+
+  <node pkg="rosbag" type="record" name="lidar_logger" ns="$(arg namespace)/sensors/lidar" args="-o $(find project11)/logs/lidar --split --duration=1h --lz4
+        velodyne_points
+        /tf
+        "/>
+
+  <node pkg="rosbag" type="record" name="radar_logger" ns="$(arg namespace)" args="-o $(find project11)/logs/radar --split --duration=1h -j 
+        sensors/radar
+        /tf
+        "/>
+
 </launch>
