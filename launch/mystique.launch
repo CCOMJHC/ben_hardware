@@ -33,9 +33,6 @@
         <arg name="namespace" value="$(arg namespace)"/>
     </include>
     
-    <node pkg="kongsberg_em_driver" type="kongsberg_em_node" name="kongsberg_2040" output="screen" ns="$(arg namespace)/sensors/mbes">
-        <rosparam command="load" file="$(find ben_hardware)/config/kongsberg_2040.yaml"/>
-    </node>
 
     
     <node pkg="nmea_navsat_driver" type="nmea_topic_serial_reader" name="nmea_reader" ns="$(arg namespace)">
