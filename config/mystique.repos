@@ -1,0 +1,101 @@
+repositories:
+  asv_global:
+    type: git
+    url: http://penguinc/roland/asv_global.git
+    version: noetic
+  ben_hardware:
+    type: git
+    url: http://penguinc/roland/ben_hardware.git
+    version: noetic
+  br24_radar:
+    type: git
+    url: http://penguinc/roland/br24_radar.git
+    version: noetic
+  command_bridge:
+    type: git
+    url: http://penguinc/roland/command_bridge.git
+    version: noetic
+  control_by_web_x4xx_interface:
+    type: git
+    url: http://penguinc/roland/control_by_web_x4xx_interface.git
+    version: noetic
+  cw4_helm:
+    type: git
+    url: http://penguinc/roland/cw4_helm.git
+    version: noetic
+  dubins_curves:
+    type: git
+    url: http://penguinc/roland/dubins_curves.git
+    version: noetic
+  flir:
+    type: git
+    url: http://penguinc/roland/flir.git
+    version: noetic
+  geographic_visualization_msgs:
+    type: git
+    url: http://penguinc/roland/geographic_visualization_msgs.git
+    version: noetic
+  helm_manager:
+    type: git
+    url: http://penguinc/roland/helm_manager.git
+    version: noetic
+  hover:
+    type: git
+    url: http://penguinc/roland/hover.git
+    version: noetic
+  manda_coverage:
+    type: git
+    url: http://penguinc/roland/manda_coverage.git
+    version: noetic
+  marine_msgs:
+    type: git
+    url: http://penguinc/roland/marine_msgs.git
+    version: noetic
+  mbr:
+    type: git
+    url: http://penguinc/roland/mbr.git
+    version: noetic
+  mission_manager:
+    type: git
+    url: http://penguinc/roland/mission_manager.git
+    version: noetic
+  mpc:
+    type: git
+    url: http://penguinc/roland/mpc.git
+    version: noetic
+  mru_transform:
+    type: git
+    url: http://penguinc/roland/mru_transform.git
+    version: noetic
+  path_follower:
+    type: git
+    url: http://penguinc/roland/path_follower.git
+    version: noetic
+  path_planner:
+    type: git
+    url: http://penguinc/roland/path_planner.git
+    version: noetic
+  posmv:
+    type: git
+    url: http://penguinc/roland/posmv.git
+    version: noetic
+  project11:
+    type: git
+    url: http://penguinc/roland/project11.git
+    version: noetic
+  project11_platform:
+    type: git
+    url: http://penguinc/roland/project11_platform.git
+    version: noetic
+  project11_robot:
+    type: git
+    url: http://penguinc/roland/project11_robot.git
+    version: noetic
+  survey_manager:
+    type: git
+    url: http://penguinc/roland/survey_manager.git
+    version: noetic
+  udp_bridge:
+    type: git
+    url: http://penguinc/roland/udp_bridge.git
+    version: noetic
