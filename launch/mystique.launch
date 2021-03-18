@@ -40,4 +40,11 @@
     <include file="$(find ben_hardware)/launch/loggers.launch">
         <arg name="namespace" value="$(arg namespace)"/>
     </include>
+    
+    <node pkg="nmea_navsat_driver" type="nmea_topic_serial_reader" name="nmea_reader" ns="$(arg namespace)">
+      <param name="port" value="/dev/ttyACM0"/>
+      <param name="baud" value="38400"/>
+      <remap from="nmea_sentence" to="sensors/nmea_sentence"/>
+    </node>
+    
 </launch>
