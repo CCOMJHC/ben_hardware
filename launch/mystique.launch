@@ -21,10 +21,10 @@
     <!--node pkg="kongsberg_em_control" type="kongsberg_em_control_node.py" name="kongsberg_em_control"/-->
     <!--node pkg="kongsberg_em" type="kongsberg_em_node.py" name="kongsberg_em"/-->
 
-    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors">
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar">
       <arg name="frame_id" value="$(arg namespace)/lidar"/>
       <arg name="manager" value="$(arg namespace)_lidar_nodelet_manager"/>
-      <remap from="velodyne_points" to="lidar"/>
+      <remap from="velodyne_points" to="points"/>
     </include>
     
     <node pkg="mbr" type="mbr_node.py" name="mbr_node" ns="$(arg namespace)"/>
