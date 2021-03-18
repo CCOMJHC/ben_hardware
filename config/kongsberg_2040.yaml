@@ -7,7 +7,7 @@ kctrl_connection:
     udp_address: "192.168.15.111"
     udp_tx_port: 14002
 # Data inputs
-sounder_name: EM2040P
+sounder_name: EM2040P_40
 run_startup: false
 ship_name: asv_ben
 mrz_frame_id: mbes
