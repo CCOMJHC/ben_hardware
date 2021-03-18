@@ -1,5 +1,5 @@
 <launch>
-  <arg "name"="namespace"/>
+  <arg name="namespace"/>
   <node pkg="rosbag" type="record" name="VLP16_logger" args="-o $(find project11)/logs/VLP16 --split --duration=1h --lz4 /velodyne_points" ns="$(arg namespace)"/>
 
   <node pkg="rosbag" type="record" name="AIS_logger" args="-o $(find project11)/logs/AIS --split --duration=1h /contact"  ns="$(arg namespace)"/>
