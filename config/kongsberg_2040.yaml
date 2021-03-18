@@ -1,10 +1,10 @@
 kmall_connection:
-    udp_address: "192.168.15.4"
+    udp_address: "224.1.20.40"
     udp_tx_port: 6021
     udp_rx_port: 6020
 kctrl_connection:
     udp_rx_port: 4002
-    udp_address: "127.0.0.1"
+    udp_address: "192.168.15.111"
     udp_tx_port: 14002
 # Data inputs
 sounder_name: EM2040_130
