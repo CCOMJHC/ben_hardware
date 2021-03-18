@@ -1,5 +1,5 @@
 kmall_connection:
-    udp_address: ""
+    udp_address: "192.168.15.4"
     udp_tx_port: 6021
     udp_rx_port: 6020
 kctrl_connection:
