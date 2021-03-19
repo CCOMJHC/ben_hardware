@@ -24,8 +24,14 @@
     <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors">
       <arg name="frame_id" value="$(arg namespace)/lidar"/>
       <arg name="manager" value="$(arg namespace)_lidar_nodelet_manager"/>
-      <remap from="velodyne_points" to="lidar"/>
+      <remap from="sensors/lidar/velodyne_points" to="sensors/lidar/points"/>
     </include>
+    
+    <node pkg="mru_transform" type="sensor_sync_node" name="sensor_sync" ns="$(arg namespace)">
+      <param name="outTopicPrefix" value="sensors/oem/sync/"/>
+      <param name="inTopicPrefix" value="sensors/oem/"/>
+    </node>
+
     
     <node pkg="mbr" type="mbr_node.py" name="mbr_node" ns="$(arg namespace)"/>
 
