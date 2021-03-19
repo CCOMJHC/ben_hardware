@@ -1,0 +1,25 @@
+kmall_connection:
+    udp_address: "224.1.20.40"
+    udp_tx_port: 6021
+    udp_rx_port: 6020
+kctrl_connection:
+    udp_rx_port: 4002
+    udp_address: "192.168.15.111"
+    udp_tx_port: 14002
+# Data inputs
+sounder_name: EM2040P_40
+run_startup: false
+ship_name: asv_ben
+mrz_frame_id: mbes
+save_kmall_files: false
+bist_dir: /home/field/project11/mbes/bist/
+kmall_dir: /home/field/project11/mbes/kmall/
+xml_dir: /home/field/project11/mbes/xml/
+max_kmall_buffer_kB: 30
+max_kmall_file_GB: 2
+# Timeouts
+kmall_timeout: 3.0
+kctrl_timeout: 3.0
+pu_powered_timeout: 10.0
+pu_connected_timeout: 10.0
+pinging_timeout: 3.0

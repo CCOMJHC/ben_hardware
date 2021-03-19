@@ -1,69 +1,77 @@
 <launch>
   <arg name="namespace"/>
-  <node pkg="rosbag" type="record" name="VLP16_logger" args="-o $(find project11)/logs/VLP16 --split --duration=1h --lz4 /velodyne_points" ns="$(arg namespace)"/>
 
-  <node pkg="rosbag" type="record" name="AIS_logger" args="-o $(find project11)/logs/AIS --split --duration=1h /contact"  ns="$(arg namespace)"/>
-  <node pkg="rosbag" type="record" name="radar_logger" args="-o $(find project11)/logs/radar --split --duration=1h -j /radar /heading /position /posmv/orientation /posmv/position /posmv/time_reference"  ns="$(arg namespace)"/>
-  <node pkg="rosbag" type="record" name="base_logger"  ns="$(arg namespace)" args="-o $(find project11)/logs/base --split --duration=1h
-        /cmd_vel
-        /contact
-        /control/drive/direct
-        /control/drive/heading_hold
-        /control/drive/inhibit
-        /control/drive/seek_position
-        /control/drive/virtual
-        /depth
-        /heading
-        /heartbeat
-        /helm
-        /helm_mode
-        /hover_action/cancel
-        /hover_action/feedback
-        /hover_action/goal
-        /hover_action/parameter_descriptions
-        /hover_action/parameter_updates
-        /hover_action/result
-        /hover_action/status
-        /link_status
-        /mbr/9372/2510/margin_avg
-        /mbr/9372/2510/margin_min
-        /mission_plan
-        /origin
-        /path_follower_action/cancel
-        /path_follower_action/feedback
-        /path_follower_action/goal
-        /path_follower_action/result
-        /path_follower_action/status
-        /position
-        /posmv/orientation
-        /posmv/position
-        /posmv/time_reference
-        /project11/command
-        /project11/crab_angle/control_effort
-        /project11/crab_angle/controller/parameter_descriptions
-        /project11/crab_angle/controller/parameter_updates
-        /project11/crab_angle/pid_debug
-        /project11/crab_angle/pid_enable
-        /project11/crab_angle/setpoint
-        /project11/crab_angle/state
-        /project11/desired_heading
-        /project11/desired_speed
-        /project11/display
-        /project11/mission_manager/command
-        /project11/mission_manager/current_line
-        /project11/mission_manager/current_speed
-        /project11/mission_manager/status
-        /project11/mission_manager/survey_area
-        /project11/response
-        /scm/vehicle/depth
+  <node pkg="rosbag" type="record" name="cw4_logger" ns="$(arg namespace)" args="-o $(find project11)/logs/cw4 --split --duration=1h
         /sensor/ais/contact
+        /link_status
         /sensor/vehicle/drive
         /sensor/vehicle/engine
         /sensor/vehicle/heading
         /sensor/vehicle/pose
         /sensor/vehicle/position
         /sensor/vehicle/timeref
-        /sog
         /vehicle_status
+        /control/drive/direct
+        /control/drive/heading_hold
+        /control/drive/inhibit
+        /control/drive/seek_position
+        /control/drive/virtual
+        /scm/vehicle/depth
+        "/>
+  
+  <node pkg="rosbag" type="record" name="base_logger"  ns="$(arg namespace)" args="-o $(find project11)/logs/base --split --duration=1h
+        control/helm
+        piloting_mode/autonomous/active
+        piloting_mode/autonomous/cmd_vel
+        piloting_mode/autonomous/helm
+        piloting_mode/manual/active
+        piloting_mode/manual/cmd_vel
+        piloting_mode/manual/helm
+        piloting_mode/standby/active
+
+        project11/heartbeat
+        project11/piloting_mode
+        project11/mission_manager/command
+        project11/command
+        project11/display
+        project11/response
+        
+        hover_action/cancel
+        hover_action/feedback
+        hover_action/goal
+        hover_action/parameter_descriptions
+        hover_action/parameter_updates
+        hover_action/result
+        hover_action/status
+
+        mbr/9372/2510/margin_avg
+        mbr/9372/2510/margin_min
+        
+        odom
+        /tf
+        /tf_static
+        sensors/posmv/orientation
+        sensors/posmv/position
+        sensors/posmv/time_reference
+        sensors/posmv/velocity
+        
+        sensors/oem/orientation
+        sensors/oem/position
+        sensors/oem/velocity
+        
+        nav/orientation
+        nav/position
+        nav/velocity
         " />
+
+  <node pkg="rosbag" type="record" name="lidar_logger" ns="$(arg namespace)/sensors/lidar" args="-o $(find project11)/logs/lidar --split --duration=1h --lz4
+        velodyne_points
+        /tf
+        "/>
+
+  <node pkg="rosbag" type="record" name="radar_logger" ns="$(arg namespace)" args="-o $(find project11)/logs/radar --split --duration=1h -j 
+        sensors/radar
+        /tf
+        "/>
+
 </launch>
