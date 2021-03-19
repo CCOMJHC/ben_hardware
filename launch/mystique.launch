@@ -3,6 +3,14 @@
     <arg name="operator_ip" default="192.168.100.199"/>
     <rosparam command="load" file="$(find ben_project11)/parameters/ben.yaml" ns="$(arg namespace)"/>
     <rosparam command="load" file="$(find ben_hardware)/config/ben.yaml" ns="$(arg namespace)"/>
+  
+    <include file="$(find ben_description)/launch/load.launch">
+        <arg name="namespace" value="$(arg namespace)"/>
+    </include>
+
+    <include file="$(find ben_description)/launch/publish_state.launch">
+        <arg name="namespace" value="$(arg namespace)"/>
+    </include>
     
     <include file="$(find project11)/launch/vehicle_core.launch">
         <arg name="host" value="$(arg operator_ip)"/>
