@@ -25,7 +25,7 @@
     <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar">
       <arg name="frame_id" value="$(arg namespace)/lidar"/>
       <arg name="manager" value="$(arg namespace)_lidar_nodelet_manager"/>
-      <remap from="sensors/lidar/velodyne_points" to="sensors/lidar/points"/>
+      <remap from="/$(arg namespace)/sensors/lidar/velodyne_points" to="/$(arg namespace)/sensors/lidar/points"/>
     </include>
     
     <node pkg="mru_transform" type="sensor_sync_node" name="sensor_sync" ns="$(arg namespace)">
