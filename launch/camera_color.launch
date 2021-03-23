@@ -3,7 +3,7 @@
   
   <node pkg="video_stream_opencv" type="video_stream" name="forward_camera" output="screen" ns="$(arg namespace)/sensors/cameras"> 
     <remap from="image_raw" to="forward_camera/image_raw" />
-    <param name="video_stream_provider" type="string" value="rtsp://192.168.10.60/stream1" />
+    <param name="video_stream_provider" type="string" value="rtsp://admin:123456@192.168.10.60:8554/h264_stream" />
     <param name="set_camera_fps" type="double" value="30" />
     <param name="buffer_queue_size" type="int" value="100" />
     <param name="fps" type="double" value="30" />
