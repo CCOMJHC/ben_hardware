@@ -64,10 +64,6 @@
         nav/velocity
         " />
 
-  <node pkg="rosbag" type="record" name="lidar_logger" ns="$(arg namespace)/sensors/lidar" args="-o $(find project11)/logs/lidar --split --duration=1h --lz4
-        velodyne_points
-        /tf
-        "/>
 
   <node pkg="rosbag" type="record" name="radar_logger" ns="$(arg namespace)" args="-o $(find project11)/logs/radar --split --duration=1h -j 
         sensors/radar
