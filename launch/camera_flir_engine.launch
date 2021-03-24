@@ -3,7 +3,7 @@
 
   <node pkg="video_stream_opencv" type="video_stream" name="flir_engine" output="screen" ns="$(arg namespace)/sensors/cameras"> 
     <remap from="image_raw" to="flir_engine/image_raw" />
-    <param name="video_stream_provider" type="string" value="rtsp://192.168.100.6/mjpg" />
+    <param name="video_stream_provider" type="string" value="rtsp://192.168.10.63/mjpg" />
     <param name="set_camera_fps" type="double" value="30" />
     <param name="buffer_queue_size" type="int" value="100" />
     <param name="fps" type="double" value="30" />
