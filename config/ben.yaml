@@ -1,2 +1,10 @@
-sonar/model: 2040
-sonar/host: stormi
+udp_bridge/remotes:
+    operator:
+        host: 192.168.100.199
+        port: 4201
+        topics:
+          sensors_flir_engine: {source: sensors/flir_engine}
+          sensors_ais_contact: {source: sensors/ais/contact}
+          sensors_radar: {source: sensors/radar}
+          mbr_9372_2510_margin_avg: {source: mbr/9372/2510/margin_avg}
+          mbr_9372_2510_margin_min: {source: mbr/9372/2510/margin_min}

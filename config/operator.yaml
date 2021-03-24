@@ -1,0 +1,4 @@
+udp_bridge/remotes:
+    robot:
+        host: mystiquec
+        port: 4200
