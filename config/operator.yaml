@@ -3,3 +3,4 @@ udp_bridge/remotes:
         name: ben
         host: mystiquec
         port: 4200
+mbr_node/radioSerialNumbers: [2510, 9442]
