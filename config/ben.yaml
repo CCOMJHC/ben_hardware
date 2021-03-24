@@ -8,3 +8,4 @@ udp_bridge/remotes:
           sensors_radar: {source: sensors/radar}
           mbr_9372_2510_margin_avg: {source: mbr/9372/2510/margin_avg}
           mbr_9372_2510_margin_min: {source: mbr/9372/2510/margin_min}
+mbr_node/radioSerialNumbers: [2510, 9442]
