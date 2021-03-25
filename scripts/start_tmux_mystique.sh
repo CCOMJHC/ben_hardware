@@ -26,6 +26,6 @@ set -v
 {
 tmux new -d -s project11 roscore
 tmux splitw -p 90
-tmux send-keys "rosrun rosmon rosmon ben_hardware mystique.launch" C-m
+tmux send-keys "rosrun rosmon rosmon --name=rosmon_ben_mystique ben_hardware mystique.launch" C-m
 
 } &>> ${LOG_FILE}

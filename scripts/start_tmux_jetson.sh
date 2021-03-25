@@ -25,6 +25,6 @@ export ROS_MASTER_URI=http://192.168.100.112:11311
 set -v
 
 {
-tmux new -d -s project11 rosrun rosmon rosmon ben_hardware jetson.launch
+tmux new -d -s project11 rosrun rosmon rosmon --name=rosmon_ben_jetson ben_hardware jetson.launch
 
 } &>> ${LOG_FILE}
