@@ -15,4 +15,6 @@
     <param name="height" type="int" value="0" />
   </node>
 
+  <node pkg="nodelet" type="nodelet" name="thumbnail" ns="$(arg namespace)/sensors/cameras/forward_camera" args="standalone image_proc/resize image:=image_raw _scale_width:=0.3 _scale_height:=0.3"/>
+
 </launch>
