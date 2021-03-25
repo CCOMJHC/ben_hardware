@@ -59,9 +59,7 @@
         sensors/oem/position
         sensors/oem/velocity
         
-        nav/orientation
-        nav/position
-        nav/velocity
+        nav/active_sensor
         " />
 
 
