@@ -46,8 +46,7 @@
       <param name="inTopicPrefix" value="sensors/oem/"/>
     </node>
 
-    
-    <node pkg="mbr" type="mbr_node.py" name="mbr_node" ns="$(arg namespace)"/>
+    <node pkg="mbr" type="mbr_logging.py" name="mbr_logging" ns="$(arg namespace)"/>
 
     <include file="$(find ben_hardware)/launch/loggers.launch">
         <arg name="namespace" value="$(arg namespace)"/>
