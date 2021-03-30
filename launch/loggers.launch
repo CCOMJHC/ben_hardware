@@ -44,9 +44,10 @@
         hover_action/result
         hover_action/status
 
-        mbr/9372/2510/margin_avg
-        mbr/9372/2510/margin_min
-        
+        mbr/9442/2510/mean_margin
+        mbr/9442/RX_bw_kbs
+        mbr/9442/TX_bw_kbs
+
         odom
         /tf
         /tf_static
