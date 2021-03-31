@@ -7,4 +7,6 @@
     <arg name="image" value="image_raw"/>
   </include>
   
+  <node pkg="nodelet" type="nodelet" name="yolo_thumbnail" ns="$(arg namespace)/sensors/cameras/pano_$(arg camera_number)" args="standalone image_proc/resize image:=detection_image _scale_width:=0.3 _scale_height:=0.3"/>
+
 </launch>
