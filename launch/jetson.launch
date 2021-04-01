@@ -1,5 +1,6 @@
 <launch>
     <arg name="namespace" default="ben"/>
+    <arg name="jetsonStats" default="true"/>
 
     <include file="$(find ben_hardware)/launch/all_panos.launch">
         <arg name="namespace" value="$(arg namespace)"/>
@@ -17,4 +18,5 @@
         <arg name="namespace" value="$(arg namespace)"/>
     </include>
 
+    <node if="$(arg jetsonStats)" pkg="ros_jetson_stats" type="jetson_stats.py" name="ros_jetson_stats" ns="$(arg namespace)"/>
 </launch>
