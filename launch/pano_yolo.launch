@@ -1,5 +1,5 @@
 <launch>
-  <arg name="namespace"/>
+  <arg name="namespace" default="ben"/>
   <arg name="camera_number"/>
 
   <include file="$(find opencv_dnn)/launch/yolo3.launch">

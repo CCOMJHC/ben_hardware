@@ -1,5 +1,5 @@
 <launch>
-  <arg name="namespace"/>
+  <arg name="namespace" default="ben"/>
   <include file="$(find ben_hardware)/launch/pano_yolo.launch"><arg name="camera_number" value="1"/><arg name="namespace" value="$(arg namespace)"/></include>
   <include file="$(find ben_hardware)/launch/pano_yolo.launch"><arg name="camera_number" value="2"/><arg name="namespace" value="$(arg namespace)"/></include>
   <include file="$(find ben_hardware)/launch/pano_yolo.launch"><arg name="camera_number" value="3"/><arg name="namespace" value="$(arg namespace)"/></include>
