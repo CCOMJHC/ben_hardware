@@ -1,3 +1,4 @@
+udp_bridge/maxPacketSize: 1450
 udp_bridge/remotes:
     operator:
         host: 192.168.100.199
