@@ -2,7 +2,7 @@
   <arg name="namespace" default="ben"/>
   <arg name="camera_number"/>
 
-  <include file="$(find opencv_dnn)/launch/yolo3.launch">
+  <include file="$(find opencv_dnn)/launch/yolo4.launch">
     <arg name="namespace" value="$(arg namespace)/sensors/cameras/pano_$(arg camera_number)"/>
     <arg name="image" value="image_raw"/>
   </include>
