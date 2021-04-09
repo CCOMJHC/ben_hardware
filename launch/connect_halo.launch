@@ -1,0 +1,18 @@
+<launch>
+  <arg name="robotNamespace" default="ben"/>
+  <arg name="remote" default="ben"/>
+  <arg name="namespace" default="operator"/>
+
+  <node pkg="rosservice" type="rosservice" name="get_haloa_data" args="call /$(arg namespace)/udp_bridge/remote_subscribe $(arg remote) /$(arg robotNamespace)/sensors/radar/HaloA/data /$(arg robotNamespace)/sensors/radar/HaloA/data 1 0"/>
+
+  <node pkg="rosservice" type="rosservice" name="get_haloa_state" args="call /$(arg namespace)/udp_bridge/remote_subscribe $(arg remote) /$(arg robotNamespace)/sensors/radar/HaloA/state /$(arg robotNamespace)/sensors/radar/HaloA/state 1 0"/>
+
+  <node pkg="rosservice" type="rosservice" name="get_halob_data" args="call /$(arg namespace)/udp_bridge/remote_subscribe $(arg remote) /$(arg robotNamespace)/sensors/radar/HaloB/data /$(arg robotNamespace)/sensors/radar/HaloB/data 1 0"/>
+
+  <node pkg="rosservice" type="rosservice" name="get_halob_state" args="call /$(arg namespace)/udp_bridge/remote_subscribe $(arg remote) /$(arg robotNamespace)/sensors/radar/HaloB/state /$(arg robotNamespace)/sensors/radar/HaloB/state 1 0"/>
+
+  <node pkg="rosservice" type="rosservice" name="send_haloa_state_change" args="call /$(arg namespace)/udp_bridge/remote_advertise $(arg remote) /$(arg robotNamespace)/sensors/radar/HaloA/state_change /$(arg robotNamespace)/sensors/radar/HaloA/state_change 1 0"/>
+
+  <node pkg="rosservice" type="rosservice" name="send_halob_state_change" args="call /$(arg namespace)/udp_bridge/remote_advertise $(arg remote) /$(arg robotNamespace)/sensors/radar/HaloB/state_change /$(arg robotNamespace)/sensors/radar/HaloB/state_change 1 0"/>
+
+</launch>
