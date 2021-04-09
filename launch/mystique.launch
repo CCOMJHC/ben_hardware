@@ -20,10 +20,14 @@
     <node pkg="flir" type="flir_node.py" name="flir_engine" ns="$(arg namespace)">
       <param name="baseURL" value="http://192.168.10.63/"/>
     </node>
-    <node pkg="br24_radar" type="br24_radar_node.py" name="br24_radar_node" ns="$(arg namespace)">
+
+    <!-- <node pkg="br24_radar" type="br24_radar_node.py" name="br24_radar_node" ns="$(arg namespace)"> 
       <remap from="radar" to="sensors/radar"/>
       <param name="frameId" value="($arg namespace)/radar"/>
-    </node>
+    </node>-->
+
+    <node pkg="halo_radar" type="halo_radar" name="halo_radar" ns="$(arg namespace)/sensors"/>
+
     <node pkg="posmv" type="posmv_node.py" name="posmv" ns="$(arg namespace)/sensors"/>
     <!--node pkg="radar_obstacle_detection" type="radar_obstacle_detection_node.py" name="radar_obstacle_detection"/-->
     <!--node pkg="kongsberg_em_control" type="kongsberg_em_control_node.py" name="kongsberg_em_control"/-->
