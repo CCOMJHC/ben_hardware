@@ -3,4 +3,7 @@ udp_bridge/remotes:
         name: ben
         host: mystiquec
         port: 4200
+        topics:
+          sensors_radar_HaloA_change_state: {source: sensors/radar/HaloA/change_state}
+          sensors_radar_HaloB_change_state: {source: sensors/radar/HaloB/change_state}
 mbr_node/radioSerialNumbers: [2510, 9442]

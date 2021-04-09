@@ -6,7 +6,11 @@ udp_bridge/remotes:
         topics:
           sensors_flir_engine: {source: sensors/flir_engine}
           sensors_ais_contact: {source: sensors/ais/contact}
-          sensors_radar: {source: sensors/radar}
           mbr_9372_2510_margin_avg: {source: mbr/9372/2510/margin_avg}
           mbr_9372_2510_margin_min: {source: mbr/9372/2510/margin_min}
+          sensors_radar_HaloA_data: {source: sensors/radar/HaloA/data}
+          sensors_radar_HaloA_state: {source: sensors/radar/HaloA/state}
+          sensors_radar_HaloB_data: {source: sensors/radar/HaloB/data}
+          sensors_radar_HaloB_state: {source: sensors/radar/HaloB/state}
+
 mbr_node/radioSerialNumbers: [2510, 9442]
