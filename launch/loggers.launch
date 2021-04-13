@@ -65,7 +65,12 @@
 
 
   <node pkg="rosbag" type="record" name="radar_logger" ns="$(arg namespace)" args="-o $(find project11)/logs/radar --split --duration=1h -j 
-        sensors/radar
+        sensors/radar/HaloA/data
+        sensors/radar/HaloA/state
+        sensors/radar/HaloA/change_state
+        sensors/radar/HaloB/data
+        sensors/radar/HaloB/state
+        sensors/radar/HaloB/change_state
         /tf
         "/>
 
