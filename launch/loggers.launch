@@ -72,6 +72,7 @@
         sensors/radar/HaloB/state
         sensors/radar/HaloB/change_state
         /tf
+        /tf_static
         "/>
 
 </launch>
