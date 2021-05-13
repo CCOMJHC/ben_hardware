@@ -1,0 +1,7 @@
+<launch>
+  <arg name="namespace"/>
+  <include file="$(find ben_hardware)/launch/pano.launch"><arg name="camera_number" value="1"/><arg name="camera_ip" value="192.168.100.207"/><arg name="namespace" value="$(arg namespace)"/></include>
+  <include file="$(find ben_hardware)/launch/pano.launch"><arg name="camera_number" value="3"/><arg name="camera_ip" value="192.168.100.209"/><arg name="namespace" value="$(arg namespace)"/></include>
+  <include file="$(find ben_hardware)/launch/pano.launch"><arg name="camera_number" value="5"/><arg name="camera_ip" value="192.168.100.211"/><arg name="namespace" value="$(arg namespace)"/></include>
+</launch>
+
