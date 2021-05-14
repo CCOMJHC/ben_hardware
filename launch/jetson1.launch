@@ -23,5 +23,5 @@
         <arg name="namespace" value="$(arg namespace)"/>
     </include>
 
-    <node if="$(arg jetsonStats)" pkg="ros_jetson_stats" type="jetson_stats.py" name="ros_jetson_stats" ns="$(arg namespace)"/>
+    <node if="$(arg jetsonStats)" pkg="ros_jetson_stats" type="jetson_stats.py" name="ros_jetson1_stats" ns="$(arg namespace)"/>
 </launch>
