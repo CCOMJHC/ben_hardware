@@ -6,8 +6,8 @@
 DAY=$(date "+%Y-%m-%d")
 NOW=$(date "+%Y-%m-%dT%H.%M.%S.%N")
 LOGDIR="/home/field/project11/log/${DAY}"
-mkdir -p ${LOGDIR}
-LOG_FILE= "${LOGDIR}/autostart_${NOW}.txt"
+mkdir -p $LOGDIR
+LOG_FILE=${LOGDIR}/autostart_${NOW}.txt
 
 echo "" >> ${LOG_FILE}
 echo "#############################################" >> ${LOG_FILE}
