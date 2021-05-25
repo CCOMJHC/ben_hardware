@@ -36,7 +36,7 @@
     <!--node pkg="kongsberg_em_control" type="kongsberg_em_control_node.py" name="kongsberg_em_control"/-->
     <!--node pkg="kongsberg_em" type="kongsberg_em_node.py" name="kongsberg_em"/-->
 
-    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar">
+    <!-- <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar">
       <arg name="frame_id" value="$(arg namespace)/lidar"/>
       <arg name="manager" value="$(arg namespace)_lidar_nodelet_manager"/>
     </include>
@@ -45,7 +45,7 @@
       <remap from="cloud_in" to="velodyne_points"/>
       <param name="resolution" value="0.5"/>
       <param name="frame_id" value="$(arg namespace)/map"/>
-    </node>
+    </node> -->
 
 
     <node pkg="mru_transform" type="sensor_sync_node" name="sensor_sync" ns="$(arg namespace)">
