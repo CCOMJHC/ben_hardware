@@ -19,17 +19,16 @@ echo "#############################################"
 echo ""
 echo "Logs:"
 
-set -v
+#source /opt/ros/melodic/setup.bash
+source /home/field/ros_ws/install_isolated/setup.bash
+source /home/field/project11/catkin_ws/devel/setup.bash
 
+set -v
 
 while ! ping -c 1 -W 1 jetson1c; do
     echo "Waiting for ping to jetson..."
     sleep 1
 done
-
-#source /opt/ros/melodic/setup.bash
-source /home/field/ros_ws/install_isolated/setup.bash
-source /home/field/project11/catkin_ws/devel/setup.bash
 
 export ROS_WORKSPACE=/home/field/project11/catkin_ws
 export ROS_IP=192.168.100.114

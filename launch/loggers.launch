@@ -1,7 +1,8 @@
 <launch>
   <arg name="namespace"/>
-
-  <node pkg="rosbag" type="record" name="cw4_logger" ns="$(arg namespace)" args="-o $(find project11)/logs/cw4 --split --duration=1h
+  <arg name="logDirectory"/>
+  
+  <node pkg="rosbag" type="record" name="cw4_logger" ns="$(arg namespace)" args="-o $(arg logDirectory)/cw4 --split --duration=1h
         /sensor/ais/contact
         /link_status
         /sensor/vehicle/drive
@@ -19,58 +20,58 @@
         /scm/vehicle/depth
         "/>
   
-  <node pkg="rosbag" type="record" name="base_logger"  ns="$(arg namespace)" args="-o $(find project11)/logs/base --split --duration=1h
-        control/helm
-        piloting_mode/autonomous/active
-        piloting_mode/autonomous/cmd_vel
-        piloting_mode/autonomous/helm
-        piloting_mode/manual/active
-        piloting_mode/manual/cmd_vel
-        piloting_mode/manual/helm
-        piloting_mode/standby/active
+  <node pkg="rosbag" type="record" name="base_logger"  ns="$(arg namespace)" args="-o $(arg logDirectory)/base --split --duration=1h
+        /$(arg namespace)/control/helm
+        /$(arg namespace)/piloting_mode/autonomous/active
+        /$(arg namespace)/piloting_mode/autonomous/cmd_vel
+        /$(arg namespace)/piloting_mode/autonomous/helm
+        /$(arg namespace)/piloting_mode/manual/active
+        /$(arg namespace)/piloting_mode/manual/cmd_vel
+        /$(arg namespace)/piloting_mode/manual/helm
+        /$(arg namespace)/piloting_mode/standby/active
 
-        project11/heartbeat
-        project11/piloting_mode
-        project11/mission_manager/command
-        project11/command
-        project11/display
-        project11/response
+        /$(arg namespace)/project11/heartbeat
+        /$(arg namespace)/project11/piloting_mode
+        /$(arg namespace)/project11/mission_manager/command
+        /$(arg namespace)/project11/command
+        /$(arg namespace)/project11/display
+        /$(arg namespace)/project11/response
         
-        hover_action/cancel
-        hover_action/feedback
-        hover_action/goal
-        hover_action/parameter_descriptions
-        hover_action/parameter_updates
-        hover_action/result
-        hover_action/status
+        /$(arg namespace)/hover_action/cancel
+        /$(arg namespace)/hover_action/feedback
+        /$(arg namespace)/hover_action/goal
+        /$(arg namespace)/hover_action/parameter_descriptions
+        /$(arg namespace)/hover_action/parameter_updates
+        /$(arg namespace)/hover_action/result
+        /$(arg namespace)/hover_action/status
 
-        mbr/9442/2510/mean_margin
-        mbr/9442/RX_bw_kbs
-        mbr/9442/TX_bw_kbs
+        /$(arg namespace)/mbr/9442/2510/mean_margin
+        /$(arg namespace)/mbr/9442/RX_bw_kbs
+        /$(arg namespace)/mbr/9442/TX_bw_kbs
 
-        odom
+        /$(arg namespace)/odom
         /tf
         /tf_static
-        sensors/posmv/orientation
-        sensors/posmv/position
-        sensors/posmv/time_reference
-        sensors/posmv/velocity
+        /$(arg namespace)/sensors/posmv/orientation
+        /$(arg namespace)/sensors/posmv/position
+        /$(arg namespace)/sensors/posmv/time_reference
+        /$(arg namespace)/sensors/posmv/velocity
         
-        sensors/oem/orientation
-        sensors/oem/position
-        sensors/oem/velocity
+        /$(arg namespace)/sensors/oem/orientation
+        /$(arg namespace)/sensors/oem/position
+        /$(arg namespace)/sensors/oem/velocity
         
-        nav/active_sensor
+        /$(arg namespace)/nav/active_sensor
         " />
 
 
-  <node pkg="rosbag" type="record" name="radar_logger" ns="$(arg namespace)" args="-o $(find project11)/logs/radar --split --duration=1h -j 
-        sensors/radar/HaloA/data
-        sensors/radar/HaloA/state
-        sensors/radar/HaloA/change_state
-        sensors/radar/HaloB/data
-        sensors/radar/HaloB/state
-        sensors/radar/HaloB/change_state
+  <node pkg="rosbag" type="record" name="radar_logger" ns="$(arg namespace)" args="-o $(arg logDirectory)/radar --split --duration=1h -j 
+        /$(arg namespace)/sensors/radar/HaloA/data
+        /$(arg namespace)/sensors/radar/HaloA/state
+        /$(arg namespace)/sensors/radar/HaloA/change_state
+        /$(arg namespace)/sensors/radar/HaloB/data
+        /$(arg namespace)/sensors/radar/HaloB/state
+        /$(arg namespace)/sensors/radar/HaloB/change_state
         /tf
         /tf_static
         "/>

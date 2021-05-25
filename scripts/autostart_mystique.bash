@@ -1,18 +1,31 @@
-# !/bin/bash
+#!/bin/bash
 
 # called from cron @reboot using field's user crontab
 # inspired by: https://answers.ros.org/question/140426/issues-launching-ros-on-startup/
 
-mkdir -p /home/field/project11/log/
-LOG_FILE=/home/field/project11/log/autostart.txt
+DAY=$(date "+%Y-%m-%d")
+NOW=$(date "+%Y-%m-%dT%H.%M.%S.%N")
+LOGDIR="/home/field/project11/log/${DAY}"
+mkdir -p "$LOGDIR"
+LOG_FILE="${LOGDIR}/autostart_${NOW}.txt"
 
-echo "" >> ${LOG_FILE}
-echo "#############################################" >> ${LOG_FILE}
-echo "Running autostart_mystique.bash" >> ${LOG_FILE}
-echo $(date) >> ${LOG_FILE}
-echo "#############################################" >> ${LOG_FILE}
-echo "" >> ${LOG_FILE}
-echo "Logs:" >> ${LOG_FILE}
+{
+
+echo ""
+echo "#############################################"
+echo "Running autostart_mystique.bash"
+date
+echo "#############################################"
+echo ""
+echo "Logs:"
+
+source /opt/ros/noetic/setup.bash
+source /home/field/project11/catkin_ws/devel/setup.bash
+
+set -v
+
+export ROS_WORKSPACE=/home/field/project11/catkin_ws
+export ROS_IP=192.168.100.112
 
 #wait for mystique to be pingable by self
 while ! ping -c 1 -W 1 mystique; do
@@ -23,19 +36,9 @@ done
 echo "Wait 10 seconds before launching ROS..."
 sleep 10
 
-set -e
 
-{
-source /opt/ros/noetic/setup.bash
-source /home/field/project11/catkin_ws/devel/setup.bash
+/usr/bin/tmux new -d -s project11 roscore
+/usr/bin/tmux splitw -p 90
+/usr/bin/tmux send-keys "rosrun rosmon rosmon --name=rosmon_ben_mystique ben_hardware mystique.launch logDirectory:=${LOGDIR}" C-m
 
-export ROS_WORKSPACE=/home/field/project11/catkin_ws
-export ROS_IP=192.168.100.112
-
-} &>> ${LOG_FILE}
-
-set -v
-
-{
-/home/field/project11/catkin_ws/src/ben_hardware/scripts/start_tmux_mystique.sh
-} &>> ${LOG_FILE}
+} >> "${LOG_FILE}" 2>&1
