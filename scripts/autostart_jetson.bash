@@ -26,7 +26,7 @@ sleep 10
 set -e
 
 {
-source /opt/ros/melodic/setup.bash
+source /home/field/ros_ws/install_isolated/setup.bash
 source /home/field/project11/catkin_ws/devel/setup.bash
 
 export ROS_WORKSPACE=/home/field/project11/catkin_ws
@@ -37,5 +37,5 @@ export ROS_MASTER_URI=http://192.168.100.112:11311
 set -v
 
 {
-/home/field/project11/catkin_ws/src/ben_hardware/scripts/start_tmux_jetson.sh
+/home/field/project11/catkin_ws/src/ccomjhc/ben_hardware/scripts/start_tmux_jetson.sh
 } &>> ${LOG_FILE}
