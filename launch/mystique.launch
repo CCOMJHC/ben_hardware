@@ -29,6 +29,7 @@
 
     <node pkg="halo_radar" type="halo_radar" name="halo_radar" ns="$(arg namespace)/sensors">
       <rosparam param="hostIPs">["192.168.10.112", ]</rosparam>
+      <param name="frameId" value="$(arg namespace)/radar"/>
     </node>
 
     <node pkg="posmv" type="posmv_node.py" name="posmv" ns="$(arg namespace)/sensors"/>
