@@ -2,6 +2,7 @@
     <arg name="namespace" default="ben"/>
     <arg name="operator_ip" default="192.168.100.199"/>
     <arg name="logDirectory"/>
+    <arg name="log_lidar" default="false"/>
   
     <include file="$(find ben_description)/launch/load.launch">
         <arg name="namespace" value="$(arg namespace)"/>
@@ -66,7 +67,7 @@
         <arg name="logDirectory" value="$(arg logDirectory)"/>
     </include>
 
-    <include file="$(find ben_project11)/launch/log_lidar.launch">
+    <include if="$(arg log_lidar)" file="$(find ben_project11)/launch/log_lidar.launch">
         <arg name="namespace" value="$(arg namespace)"/>
         <arg name="logDirectory" value="$(arg logDirectory)"/>
     </include>
