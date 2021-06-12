@@ -17,3 +17,6 @@ udp_bridge/remotes:
           sensors_ais_contact: {source: sensors/ais/contact}
 
 mbr_node/radioSerialNumbers: [2510, 9442]
+
+sonar/model: 2040
+sonar/host: stormi
