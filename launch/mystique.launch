@@ -36,7 +36,10 @@
 
     <node pkg="posmv" type="posmv_node.py" name="posmv" ns="$(arg namespace)/sensors"/>
     <!--node pkg="radar_obstacle_detection" type="radar_obstacle_detection_node.py" name="radar_obstacle_detection"/-->
+
     <node pkg="kongsberg_em_control" type="kongsberg_em_control_node.py" name="kongsberg_em_control" ns="$(arg namespace)"/>
+    <node pkg="kongsberg_em_control" type="endofline_listener.py" name="endofline_listener" ns="$(arg namespace)"/>
+
     <!--node pkg="kongsberg_em" type="kongsberg_em_node.py" name="kongsberg_em"/-->
 
     <!-- <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar">
