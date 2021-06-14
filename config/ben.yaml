@@ -12,6 +12,7 @@ udp_bridge/remotes:
           sensors_radar_HaloA_state: {source: sensors/radar/HaloA/state}
           sensors_radar_HaloB_data: {source: sensors/radar/HaloB/data}
           sensors_radar_HaloB_state: {source: sensors/radar/HaloB/state}
+          mobile_position: {source: /mobile/base/position, destination: /operator/base/position}
     observer:
         topics:
           sensors_ais_contact: {source: sensors/ais/contact}
