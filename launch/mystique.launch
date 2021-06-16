@@ -82,6 +82,10 @@
       <remap from="nmea_sentence" to="sensors/nmea_sentence"/>
     </node>
 
+    <include file="$(find ben_hardware)/launch/all_panos_thumbnails.launch">
+        <arg name="namespace" value="$(arg namespace)"/>
+    </include>
+
     <rosparam command="load" file="$(find ben_project11)/config/ben.yaml" ns="$(arg namespace)"/>
     <rosparam command="load" file="$(find ben_hardware)/config/ben.yaml" ns="$(arg namespace)"/>
     <param name="/$(arg namespace)/udp_bridge/remotes/operator/host" value="$(arg operator_ip)"/>

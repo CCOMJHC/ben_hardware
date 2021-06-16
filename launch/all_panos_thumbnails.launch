@@ -1,0 +1,10 @@
+<launch>
+  <arg name="namespace" default="ben"/>
+  <include file="$(find ben_hardware)/launch/pano_thumbnail.launch"><arg name="camera_number" value="1"/><arg name="namespace" value="$(arg namespace)"/></include>
+  <include file="$(find ben_hardware)/launch/pano_thumbnail.launch"><arg name="camera_number" value="2"/><arg name="namespace" value="$(arg namespace)"/></include>
+  <include file="$(find ben_hardware)/launch/pano_thumbnail.launch"><arg name="camera_number" value="3"/><arg name="namespace" value="$(arg namespace)"/></include>
+  <include file="$(find ben_hardware)/launch/pano_thumbnail.launch"><arg name="camera_number" value="4"/><arg name="namespace" value="$(arg namespace)"/></include>
+  <include file="$(find ben_hardware)/launch/pano_thumbnail.launch"><arg name="camera_number" value="5"/><arg name="namespace" value="$(arg namespace)"/></include>
+  <include file="$(find ben_hardware)/launch/pano_thumbnail.launch"><arg name="camera_number" value="6"/><arg name="namespace" value="$(arg namespace)"/></include>
+</launch>
+

@@ -1,0 +1,9 @@
+<launch>
+  <arg name="namespace" default="ben"/>
+  <arg name="camera_number"/>
+
+  <node pkg="nodelet" type="nodelet" name="thumbnail_$(arg camera_number)" ns="$(arg namespace)/sensors/cameras/pano_$(arg camera_number)" args="standalone image_proc/resize image:=image_raw _scale_width:=0.3 _scale_height:=0.3"/>
+
+  <node pkg="nodelet" type="nodelet" name="yolo_thumbnail_$(arg camera_number)" ns="$(arg namespace)/sensors/cameras/pano_$(arg camera_number)" args="standalone image_proc/resize image:=detection_image _scale_width:=0.35 _scale_height:=0.35"/>
+
+</launch>
