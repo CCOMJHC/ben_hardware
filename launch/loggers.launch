@@ -2,24 +2,6 @@
   <arg name="namespace"/>
   <arg name="logDirectory"/>
   
-  <node pkg="rosbag" type="record" name="cw4_logger" ns="$(arg namespace)" args="-o $(arg logDirectory)/cw4 --split --duration=1h
-        /sensor/ais/contact
-        /link_status
-        /sensor/vehicle/drive
-        /sensor/vehicle/engine
-        /sensor/vehicle/heading
-        /sensor/vehicle/pose
-        /sensor/vehicle/position
-        /sensor/vehicle/timeref
-        /vehicle_status
-        /control/drive/direct
-        /control/drive/heading_hold
-        /control/drive/inhibit
-        /control/drive/seek_position
-        /control/drive/virtual
-        /scm/vehicle/depth
-        "/>
-  
   <node pkg="rosbag" type="record" name="base_logger"  ns="$(arg namespace)" args="-o $(arg logDirectory)/base --split --duration=1h
         /$(arg namespace)/control/helm
         /$(arg namespace)/piloting_mode/autonomous/active
@@ -62,6 +44,24 @@
         /$(arg namespace)/sensors/oem/velocity
         
         /$(arg namespace)/nav/active_sensor
+
+        /diagnostics
+
+        /sensor/ais/contact
+        /link_status
+        /sensor/vehicle/drive
+        /sensor/vehicle/engine
+        /sensor/vehicle/heading
+        /sensor/vehicle/pose
+        /sensor/vehicle/position
+        /sensor/vehicle/timeref
+        /vehicle_status
+        /control/drive/direct
+        /control/drive/heading_hold
+        /control/drive/inhibit
+        /control/drive/seek_position
+        /control/drive/virtual
+        /scm/vehicle/depth
         " />
 
 
