@@ -39,6 +39,6 @@ sleep 10
 
 /usr/bin/tmux new -d -s project11 roscore
 /usr/bin/tmux splitw -p 90
-/usr/bin/tmux send-keys "rosrun rosmon rosmon --name=rosmon_ben_mystique ben_hardware mystique.launch logDirectory:=${LOGDIR} operator_ip:=192.168.100.198" C-m
+/usr/bin/tmux send-keys "rosrun rosmon rosmon --name=rosmon_ben_mystique ben_hardware mystique.launch logDirectory:=${LOGDIR} operator_ip:=192.168.100.142" C-m
 
 } >> "${LOG_FILE}" 2>&1
