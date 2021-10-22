@@ -1,0 +1,22 @@
+<launch>
+  <arg name="namespace" value="ben"/>
+  <arg name="camera_ip" value="192.168.50.250"/>
+
+  <node pkg="video_stream_opencv" type="video_stream" name="qoocam" output="screen" ns="$(arg namespace)/sensors/cameras"> 
+    <remap from="image_raw" to="qoocam/image_raw" />
+    <param name="video_stream_provider" type="string" value="rtsp://$(arg camera_ip):8554" />
+    <param name="set_camera_fps" type="double" value="2" />
+    <param name="buffer_queue_size" type="int" value="1" />
+    <param name="fps" type="double" value="2" />
+    <param name="frame_id" type="string" value="$(arg namespace)/qoocam" />
+    <param name="flip_horizontal" type="bool" value="false" />
+    <param name="flip_vertical" type="bool" value="false" />
+    <param name="width" type="int" value="0" />
+    <param name="height" type="int" value="0" />
+    <param name="reopen_on_read_failure" value="true"/>
+  </node>
+
+      
+  <!-- <node pkg="nodelet" type="nodelet" name="thumbnail" ns="$(arg namespace)/sensors/cameras/pano_$(arg camera_number)" args="standalone image_proc/resize image:=image_raw _scale_width:=0.3 _scale_height:=0.3"/> -->
+  <!-- <node pkg="nodelet" type="nodelet" name="rectify" ns="$(arg namespace)/sensors/cameras/pano_$(arg camera_number)" args="standalone image_proc/rectify image_mono:=image_raw"/> -->
+</launch>

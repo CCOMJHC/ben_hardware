@@ -1,0 +1,6 @@
+<launch>
+  <arg name="namespace" default="ben"/>
+
+  <node pkg="nodelet" type="nodelet" name="thumbnail_qoocam" ns="$(arg namespace)/sensors/cameras/qoocam" args="standalone image_proc/resize image:=image_raw _scale_width:=0.2 _scale_height:=0.2"/>
+
+</launch>

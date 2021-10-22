@@ -1,0 +1,25 @@
+<launch>
+  <arg name="namespace" default="ben"/>
+  <arg name="logDirectory" default="/home/field/qoocam/"/>
+
+  <include file="$(find ben_hardware)/launch/qoocam.launch">
+  </include>
+
+  <node pkg="posmv" type="posmv_node.py" name="posmv" ns="$(arg namespace)/sensors"/>
+
+  
+  <node pkg="rosbag" type="record" name="qoocam_logger"  ns="$(arg namespace)" args="-o $(arg logDirectory)/qoocam --split --duration=15m
+        /$(arg namespace)/sensors/posmv/orientation
+        /$(arg namespace)/sensors/posmv/position
+        /$(arg namespace)/sensors/posmv/time_reference
+        /$(arg namespace)/sensors/posmv/velocity
+        
+        /diagnostics
+
+        /$(arg namespace)/sensors/cameras/qoocam/camera_info
+        /$(arg namespace)/sensors/cameras/qoocam/image_raw/compressed
+        /rosout
+        " />
+
+
+</launch>
