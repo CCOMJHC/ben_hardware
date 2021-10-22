@@ -86,6 +86,8 @@
         <arg name="namespace" value="$(arg namespace)"/>
     </include>
 
+    <node pkg="cw4_nmea2000" type="nmea_conv_node.py" name="nmea_conv" ns="$(arg namespace)"/>
+
     <rosparam command="load" file="$(find ben_project11)/config/ben.yaml" ns="$(arg namespace)"/>
     <rosparam command="load" file="$(find ben_hardware)/config/ben.yaml" ns="$(arg namespace)"/>
     <param name="/$(arg namespace)/udp_bridge/remotes/operator/host" value="$(arg operator_ip)"/>
