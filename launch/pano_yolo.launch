@@ -1,10 +1,11 @@
 <launch>
   <arg name="namespace" default="ben"/>
   <arg name="camera_number"/>
+  <arg name="image_topic" default="image_raw"/>
 
   <include file="$(find opencv_dnn)/launch/yolo4.launch">
     <arg name="namespace" value="$(arg namespace)/sensors/cameras/pano_$(arg camera_number)"/>
-    <arg name="image" value="image_raw"/>
+    <arg name="image" value="$(arg image_topic)"/>
   </include>
   
   <!-- <node pkg="nodelet" type="nodelet" name="yolo_thumbnail" ns="$(arg namespace)/sensors/cameras/pano_$(arg camera_number)" args="standalone image_proc/resize image:=detection_image _scale_width:=0.5 _scale_height:=0.5"/> -->
