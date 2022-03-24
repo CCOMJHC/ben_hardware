@@ -5,18 +5,9 @@
     <arg name="logDirectory"/>
     <arg name="log_lidar" default="false"/>
   
-    <include file="$(find ben_description)/launch/load.launch">
+    <include file="$(find ben_project11)/launch/ben_core.launch">
         <arg name="namespace" value="$(arg namespace)"/>
     </include>
-
-    <include file="$(find ben_description)/launch/publish_state.launch">
-        <arg name="namespace" value="$(arg namespace)"/>
-    </include>
-    
-    <include file="$(find project11)/launch/robot_core.launch">
-        <arg name="namespace" value="$(arg namespace)"/>
-    </include>
-
     
     <node pkg="cw4_helm" type="cw4_helm_node" name="cw4_helm" ns="$(arg namespace)"/>
     <node pkg="control_by_web_x4xx_interface" type="cbw_x4xx_node.py" name="control_by_web_x4xx_interface" ns="$(arg namespace)"/>
