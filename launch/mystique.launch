@@ -1,7 +1,7 @@
 <launch>
     <arg name="namespace" default="ben"/>
     <arg name="operator_ip" default="192.168.100.142"/>
-    <arg name="observer_ip" default="192.168.100.99"/>
+    <!-- <arg name="observer_ip" default="192.168.100.99"/> -->
     <arg name="logDirectory"/>
     <arg name="log_lidar" default="false"/>
   
@@ -33,12 +33,12 @@
 
     <!--node pkg="kongsberg_em" type="kongsberg_em_node.py" name="kongsberg_em"/-->
 
-    <!-- <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar">
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar"> -->
       <arg name="frame_id" value="$(arg namespace)/lidar"/>
       <arg name="manager" value="$(arg namespace)_lidar_nodelet_manager"/>
     </include>
 
-    <node pkg="octomap_server" type="octomap_server_node" name="octomap_server" ns="$(arg namespace)/sensors/lidar">
+    <!-- <node pkg="octomap_server" type="octomap_server_node" name="octomap_server" ns="$(arg namespace)/sensors/lidar">
       <remap from="cloud_in" to="velodyne_points"/>
       <param name="resolution" value="0.5"/>
       <param name="frame_id" value="$(arg namespace)/map"/>
@@ -82,5 +82,5 @@
     <rosparam command="load" file="$(find ben_project11)/config/ben.yaml" ns="$(arg namespace)"/>
     <rosparam command="load" file="$(find ben_hardware)/config/ben.yaml" ns="$(arg namespace)"/>
     <param name="/$(arg namespace)/udp_bridge/remotes/operator/host" value="$(arg operator_ip)"/>
-    <param name="/$(arg namespace)/udp_bridge/remotes/observer/host" value="$(arg observer_ip)"/>
+    <!-- <param name="/$(arg namespace)/udp_bridge/remotes/observer/host" value="$(arg observer_ip)"/> -->
 </launch>
