@@ -1,7 +1,7 @@
 udp_bridge/maxPacketSize: 1400
 udp_bridge/remotes:
     operator:
-        host: 192.168.100.199
+        host: 192.168.100.142
         port: 4201
         topics:
           sensors_flir_engine: {source: sensors/flir_engine}
@@ -13,9 +13,6 @@ udp_bridge/remotes:
           sensors_radar_HaloB_data: {source: sensors/radar/HaloB/data}
           sensors_radar_HaloB_state: {source: sensors/radar/HaloB/state}
           mobile_position: {source: /mobile/base/position, destination: /operator/base/position}
-    observer:
-        topics:
-          sensors_ais_contact: {source: sensors/ais/contact}
 
 mbr_node/radioSerialNumbers: [2510, 9442]
 
