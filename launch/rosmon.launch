@@ -1,3 +1,3 @@
 <launch>
-  <node pkg="rosmon" type="rosmon" name="rosmon_project11" args="--name=rosmon_project11 --disable-ui ben_hardware mystique.launch"/>
+  <node pkg="rosmon" type="rosmon" name="rosmon_ben_project11" args="--name=rosmon_ben_project11 --disable-ui ben_hardware mystique.launch"/>
 </launch>
