@@ -2,7 +2,7 @@
     <arg name="namespace" default="ben"/>
     <arg name="operator_ip" default="192.168.100.142"/>
     <arg name="observer_ip" default="192.168.100.99"/>
-    <arg name="logDirectory"/>
+    <arg name="logDirectory" default="/dev/null"/>
     <arg name="log_lidar" default="false"/>
   
     <include file="$(find ben_project11)/launch/ben_core.launch">
