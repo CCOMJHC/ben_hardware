@@ -43,6 +43,8 @@
       <param name="frame_id" value="$(arg namespace)/map"/>
     </node> -->
 
+    <node pkg="libsensors_monitor" type="libsensors_monitor" name="mystique_monitoring" ns="$(arg namespace)">
+    </node>
 
     <node pkg="mru_transform" type="sensor_sync_node" name="sensor_sync" ns="$(arg namespace)">
       <param name="outTopicPrefix" value="sensors/oem/sync/"/>
