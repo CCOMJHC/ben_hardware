@@ -13,6 +13,8 @@ udp_bridge/remotes:
           sensors_radar_HaloB_data: {source: sensors/radar/HaloB/data}
           sensors_radar_HaloB_state: {source: sensors/radar/HaloB/state}
           mobile_position: {source: /mobile/base/position, destination: /operator/base/position}
+          cw4_drive: {source: /sensor/vehicle/drive}
+          cw4_engine: {source: /sensor/vehicle/engine}
 
 mbr_node/radioSerialNumbers: [2510, 9442]
 
