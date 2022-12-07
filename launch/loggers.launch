@@ -2,7 +2,7 @@
   <arg name="namespace"/>
   <arg name="logDirectory"/>
 
-  <node pkg="rosbag" type="record" name="ben_logger"  ns="$(arg namespace)" args="-o $(arg logDirectory)/ben --split --duration=10m --lz4 -a -x  &quot;(.*)image(.*)|(.*)lidar(.*)&quot;
+  <node pkg="rosbag" type="record" name="ben_logger"  ns="$(arg namespace)" args="-o $(arg logDirectory)/ben --split --duration=15m --repeat-latched --lz4 -a -x  &quot;(.*)image(.*)|(.*)lidar(.*)&quot;
 " />
 
   <!-- <node pkg="rosbag" type="record" name="base_logger"  ns="$(arg namespace)" args="-o $(arg logDirectory)/base --split --duration=1h
