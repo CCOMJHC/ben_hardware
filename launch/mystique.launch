@@ -24,6 +24,10 @@
       <param name="frameId" value="$(arg namespace)/radar"/>
     </node>
 
+    <include file="$(find ben_project11)/launch/costmap_radar.launch">
+      <arg name="namespace" value="$(arg namespace)"/>
+    </include>
+
     <node pkg="posmv" type="posmv_node.py" name="posmv" ns="$(arg namespace)/sensors"/>
     <!--node pkg="radar_obstacle_detection" type="radar_obstacle_detection_node.py" name="radar_obstacle_detection"/-->
 
@@ -37,11 +41,17 @@
       <arg name="manager" value="$(arg namespace)_lidar_nodelet_manager"/>
     </include>
 
+    <node pkg="pointcloud2_spherical_filter" type="pointcloud2_spherical_filter_node" name="sperical_filter" ns="$(arg namespace)/sensors/lidar"> 
+      <rosparam param="excludes">[{min: 0.0, max: 2.0}, {min: 34.0, max: 40.5}]</rosparam>
+      <remap from="input" to="velodyne_points"/>
+      <remap from="output" to="velodyne_points_filtered"/>
+    </node>
+
     <node pkg="octomap_server" type="octomap_server_node" name="octomap_server" ns="$(arg namespace)/sensors/lidar">
-      <remap from="cloud_in" to="velodyne_points"/>
+      <remap from="cloud_in" to="velodyne_points_filtered"/>
       <param name="resolution" value="1.0"/>
       <param name="frame_id" value="$(arg namespace)/map"/>
-      <param name="sensor_model/max_range" value="34"/> <!--This avoids a noise ring at 35 meters -->
+      <!-- <param name="sensor_model/max_range" value="34"/> This avoids a noise ring at 35 meters -->
     </node>
 
     <node pkg="libsensors_monitor" type="libsensors_monitor" name="mystique_monitoring" ns="$(arg namespace)">
