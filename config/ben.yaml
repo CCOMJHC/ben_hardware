@@ -4,6 +4,7 @@ udp_bridge/remotes:
         host: 192.168.100.142
         port: 4201
         topics:
+          cbw_status: {source: control_by_web_status}
           sensors_flir_engine: {source: sensors/flir_engine}
           sensors_ais_contact: {source: sensors/ais/contact}
           mbr_9372_2510_margin_avg: {source: mbr/9372/2510/margin_avg}
