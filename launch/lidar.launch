@@ -1,0 +1,9 @@
+<launch>
+    <arg name="namespace" default="ben"/>
+    
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar">
+      <arg name="frame_id" value="$(arg namespace)/lidar"/>
+      <arg name="manager" value="$(arg namespace)_lidar_nodelet_manager"/>
+    </include>
+
+</launch>
