@@ -83,10 +83,6 @@ repositories:
     type: git
     url: git@penguinc:field/manda_coverage.git
     version: noetic
-  ccomjhc/marine_msgs:
-    type: git
-    url: git@penguinc:field/marine_msgs.git
-    version: noetic
   ccomjhc/mbr:
     type: git
     url: git@penguinc:field/mbr.git
