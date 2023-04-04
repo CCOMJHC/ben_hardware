@@ -8,7 +8,8 @@
         <arg name="namespace" value="$(arg namespace)"/>
     </include>
     
-    <node pkg="cw4_helm" type="cw4_helm_node" name="cw4_helm" ns="$(arg namespace)"/>
+    <node pkg="cw4_helm" type="cw4_helm_node" name="asv_helm" ns="$(arg namespace)"/>
+    
     <node pkg="control_by_web_x4xx_interface" type="cbw_x4xx_node.py" name="control_by_web_x4xx_interface" ns="$(arg namespace)"/>
     <node pkg="flir" type="flir_node.py" name="flir_engine" ns="$(arg namespace)">
       <param name="baseURL" value="http://192.168.10.63/"/>
