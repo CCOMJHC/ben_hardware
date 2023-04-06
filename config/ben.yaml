@@ -15,6 +15,9 @@ udp_bridge/remotes:
           mobile_position: {source: /mobile/base/position, destination: /operator/base/position}
           cw4_drive: {source: /sensor/vehicle/drive}
           cw4_engine: {source: /sensor/vehicle/engine}
+          posmv_position: {source: sensors/posmv/position}
+          posmv_orientation: {source: sensors/posmv/orientation}
+          posmv_velocity: {source: sensors/posmv/velocity}
 
 mbr_node/radioSerialNumbers: [2510, 9442]
 
