@@ -17,8 +17,11 @@
   <exec_depend>control_by_web_x4xx_interface</exec_depend>
   <exec_depend>kongsberg_em_control</exec_depend>
   <exec_depend>halo_radar</exec_depend>
+  <exec_depend>libsensors_monitor</exec_depend>
   <exec_depend>mbr</exec_depend>
   <exec_depend>mru_transform</exec_depend>
+  <exec_depend>nmea_navsat_driver</exec_depend>
+  <exec_depend>octomap_server</exec_depend>
   <exec_depend>posmv</exec_depend>
   <exec_depend>project11</exec_depend>
   <exec_depend>velodyne_pointcloud</exec_depend>
