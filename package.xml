@@ -12,13 +12,15 @@
   <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <exec_depend>video_stream_opencv</exec_depend>
-  <exec_depend>project11_robot</exec_depend>
   <exec_depend>cw4_helm</exec_depend>
+  <exec_depend>ben_project11</exec_depend>
   <exec_depend>control_by_web_x4xx_interface</exec_depend>
-  <exec_depend>flir</exec_depend>
-  <exec_depend>br24_radar</exec_depend>
-  <exec_depend>posmv</exec_depend>
-  <exec_depend>velodyne_pointcloud</exec_depend>
+  <exec_depend>kongsberg_em_control</exec_depend>
+  <exec_depend>halo_radar</exec_depend>
   <exec_depend>mbr</exec_depend>
+  <exec_depend>mru_transforms</exec_depend>
+  <exec_depend>posmv</exec_depend>
+  <exec_depend>project11</exec_depend>
+  <exec_depend>velodyne_pointcloud</exec_depend>
+  <exec_depend>video_stream_opencv</exec_depend>
 </package>
