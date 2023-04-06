@@ -18,7 +18,7 @@
   <exec_depend>kongsberg_em_control</exec_depend>
   <exec_depend>halo_radar</exec_depend>
   <exec_depend>mbr</exec_depend>
-  <exec_depend>mru_transforms</exec_depend>
+  <exec_depend>mru_transform</exec_depend>
   <exec_depend>posmv</exec_depend>
   <exec_depend>project11</exec_depend>
   <exec_depend>velodyne_pointcloud</exec_depend>
