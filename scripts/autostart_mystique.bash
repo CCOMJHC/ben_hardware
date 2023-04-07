@@ -25,7 +25,7 @@ source /home/field/project11/catkin_ws/devel/setup.bash
 set -v
 
 export ROS_WORKSPACE=/home/field/project11/catkin_ws
-export ROS_IP=192.168.100.112
+export ROS_IP=192.168.10.112
 
 #wait for mystique to be pingable by self
 while ! ping -c 1 -W 1 mystique; do
@@ -36,9 +36,9 @@ done
 echo "Wait 10 seconds before launching ROS..."
 sleep 10
 
+/usr/bin/tmux new -d -s roscore roscore
 
-/usr/bin/tmux new -d -s project11 roscore
-/usr/bin/tmux splitw -p 90
+/usr/bin/tmux new -d -s project11 
 /usr/bin/tmux send-keys "rosrun rosmon rosmon --name=rosmon_ben_mystique ben_hardware mystique.launch logDirectory:=${LOGDIR} operator_ip:=192.168.100.142" C-m
 
 } >> "${LOG_FILE}" 2>&1
