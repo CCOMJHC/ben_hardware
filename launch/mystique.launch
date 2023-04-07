@@ -25,10 +25,6 @@
       <param name="frameId" value="$(arg namespace)/radar"/>
     </node>
 
-    <include file="$(find ben_project11)/launch/costmap_radar.launch">
-      <arg name="namespace" value="$(arg namespace)"/>
-    </include>
-
     <node pkg="posmv" type="posmv_node.py" name="posmv" ns="$(arg namespace)/sensors"/>
     <!--node pkg="radar_obstacle_detection" type="radar_obstacle_detection_node.py" name="radar_obstacle_detection"/-->
 
