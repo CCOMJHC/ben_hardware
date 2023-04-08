@@ -11,29 +11,39 @@
     <node pkg="cw4_helm" type="cw4_helm_node" name="asv_helm" ns="$(arg namespace)"/>
     
     <node pkg="control_by_web_x4xx_interface" type="cbw_x4xx_node.py" name="control_by_web_x4xx_interface" ns="$(arg namespace)"/>
+
     <node pkg="flir" type="flir_node.py" name="flir_engine" ns="$(arg namespace)">
       <param name="baseURL" value="http://192.168.10.63/"/>
     </node>
 
-    <!-- <node pkg="br24_radar" type="br24_radar_node.py" name="br24_radar_node" ns="$(arg namespace)"> 
-      <remap from="radar" to="sensors/radar"/>
-      <param name="frameId" value="($arg namespace)/radar"/>
-    </node>-->
 
-    <node pkg="halo_radar" type="halo_radar" name="halo_radar" ns="$(arg namespace)/sensors">
+  <group ns="$(arg namespace)/sensors/radar">
+    <node pkg="halo_radar" type="halo_radar" name="halo_radar">
       <rosparam param="hostIPs">["192.168.10.112", "192.168.99.112" ]</rosparam>
       <param name="frameId" value="$(arg namespace)/radar"/>
     </node>
 
+    <group ns="HaloA">
+      <node pkg="marine_radar_tracker" type="marine_radar_tracker" name="marine_radar_tracker">
+        <param name="map_frame" value="$(arg namespace)/map"/>
+        <remap from="radar_data" to="data"/>
+        <param name="minimum_range" value="10.0"/>
+      </node>
+
+      <node pkg="marine_radar_tracker" type="marine_radar_to_pointcloud" name="marine_radar_to_pointcloud">
+        <remap from="radar_data" to="data"/>
+      </node>
+    </group>
+  </group>
+
+
     <node pkg="posmv" type="posmv_node.py" name="posmv" ns="$(arg namespace)/sensors"/>
-    <!--node pkg="radar_obstacle_detection" type="radar_obstacle_detection_node.py" name="radar_obstacle_detection"/-->
 
     <node pkg="kongsberg_em_control" type="kongsberg_em_control_node.py" name="kongsberg_em_control" ns="$(arg namespace)"/>
     <node pkg="kongsberg_em_control" type="endofline_listener.py" name="endofline_listener" ns="$(arg namespace)"/>
 
-    <!--node pkg="kongsberg_em" type="kongsberg_em_node.py" name="kongsberg_em"/-->
 
-    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar"> -->
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar">
       <arg name="frame_id" value="$(arg namespace)/lidar"/>
       <arg name="manager" value="$(arg namespace)_lidar_nodelet_manager"/>
     </include>
@@ -48,15 +58,9 @@
       <remap from="cloud_in" to="velodyne_points_filtered"/>
       <param name="resolution" value="1.0"/>
       <param name="frame_id" value="$(arg namespace)/map"/>
-      <!-- <param name="sensor_model/max_range" value="34"/> This avoids a noise ring at 35 meters -->
     </node>
 
     <node pkg="libsensors_monitor" type="libsensors_monitor" name="mystique_monitoring" ns="$(arg namespace)">
-    </node>
-
-    <node pkg="mru_transform" type="sensor_sync_node" name="sensor_sync" ns="$(arg namespace)">
-      <param name="outTopicPrefix" value="sensors/oem/sync/"/>
-      <param name="inTopicPrefix" value="sensors/oem/"/>
     </node>
 
     <node pkg="mbr" type="mbr_logging.py" name="mbr_logging" ns="$(arg namespace)"/>
