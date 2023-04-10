@@ -18,6 +18,9 @@ udp_bridge/remotes:
           posmv_position: {source: sensors/posmv/position}
           posmv_orientation: {source: sensors/posmv/orientation}
           posmv_velocity: {source: sensors/posmv/velocity}
+          oem_position: {source: sensors/oem/position}
+          oem_orientation: {source: sensors/oem/orientation}
+          oem_velocity: {source: sensors/oem/velocity}
 
 mbr_node/radioSerialNumbers: [2510, 9442]
 
