@@ -65,6 +65,8 @@
 
     <node pkg="mbr" type="mbr_logging.py" name="mbr_logging" ns="$(arg namespace)"/>
 
+    <node pkg="starlink_stats_ros" type="starlink_diagnostics_node.py" name="starlink_diagnostics"/>
+
     <include file="$(find ben_hardware)/launch/loggers.launch">
         <arg name="namespace" value="$(arg namespace)"/>
         <arg name="logDirectory" value="$(arg logDirectory)"/>
