@@ -5,7 +5,7 @@
 
   <node pkg="video_stream_opencv" type="video_stream" name="pano_$(arg camera_number)" output="screen" ns="$(arg namespace)/sensors/cameras"> 
     <remap from="image_raw" to="pano_$(arg camera_number)/image_raw" />
-    <param name="video_stream_provider" type="string" value="rtsp://unmanned:unmanned@$(arg camera_ip):554/cam1/mpeg4" />
+    <param name="video_stream_provider" type="string" value="rtsp://admin:unmanned@$(arg camera_ip):554/11" />
     <param name="set_camera_fps" type="double" value="5" />
     <param name="buffer_queue_size" type="int" value="1" />
     <param name="fps" type="double" value="5" />
