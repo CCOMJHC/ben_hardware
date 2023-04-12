@@ -3,7 +3,7 @@
   <arg name="camera_number"/>
   <arg name="camera_ip"/>
 
-  <group ns="pano_$(arg camera_ip)">
+  <group ns="pano_$(arg camera_number)">
     <rosparam command="load" file="$(find ben_hardware)/config/pano_camera.yaml"/>
 
     <group ns="video_stream_opencv">
