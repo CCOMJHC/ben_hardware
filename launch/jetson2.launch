@@ -1,15 +1,10 @@
 <launch>
     <arg name="namespace" default="ben"/>
     <arg name="jetsonStats" default="true"/>
-    <arg name="yolo" default="true"/>
 
-    <include file="$(find ben_hardware)/launch/even_panos.launch">
+    <include file="$(find ben_hardware)/launch/panos_even.launch">
         <arg name="namespace" value="$(arg namespace)"/>
     </include>
 
-    <include if="$(arg yolo)" file="$(find ben_hardware)/launch/even_panos_yolo.launch">
-        <arg name="namespace" value="$(arg namespace)"/>
-    </include>
-    
     <node if="$(arg jetsonStats)" pkg="ros_jetson_stats" type="jetson_stats.py" name="ros_jetson2_stats" ns="$(arg namespace)"/>
 </launch>

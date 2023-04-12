@@ -1,13 +1,8 @@
 <launch>
     <arg name="namespace" default="ben"/>
     <arg name="jetsonStats" default="true"/>
-    <arg name="yolo" default="true"/>
 
-    <include file="$(find ben_hardware)/launch/odd_panos.launch">
-        <arg name="namespace" value="$(arg namespace)"/>
-    </include>
-
-    <include if="$(arg yolo)" file="$(find ben_hardware)/launch/odd_panos_yolo.launch">
+    <include file="$(find ben_hardware)/launch/panos_odd.launch">
         <arg name="namespace" value="$(arg namespace)"/>
     </include>
     
