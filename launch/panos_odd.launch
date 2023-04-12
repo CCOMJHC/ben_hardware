@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find ben_hardware)/launch/pano.launch" ns="pano_1"/>
+  <include file="$(find ben_hardware)/launch/pano.launch" ns="pano_3"/>
+  <include file="$(find ben_hardware)/launch/pano.launch" ns="pano_5"/>
+</launch>
+
