@@ -2,7 +2,7 @@
     <arg name="namespace" default="ben"/>
     <arg name="jetsonStats" default="true"/>
 
-    <include file="$(find ben_hardware)/launch/panos_even.launch">
+    <include file="$(find ben_hardware)/launch/panos_even.launch" ns="$(arg namespace)/sensors/cameras">
         <arg name="namespace" value="$(arg namespace)"/>
     </include>
 
