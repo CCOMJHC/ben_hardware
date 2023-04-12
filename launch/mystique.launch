@@ -97,5 +97,5 @@
     <rosparam command="load" file="$(find ben_project11)/config/ben.yaml" ns="$(arg namespace)"/>
     <rosparam command="load" file="$(find ben_hardware)/config/ben.yaml" ns="$(arg namespace)"/>
     <param name="/$(arg namespace)/udp_bridge/remotes/operator/host" value="$(arg operator_ip)"/>
-    <rosparam command="load" file="$(find ccomjhc/configuration/mbr.yaml" ns="$(arg namespace)"/>
+    <rosparam command="load" file="$(find ccomjhc_project11)/configuration/mbr.yaml" ns="$(arg namespace)"/>
 </launch>
