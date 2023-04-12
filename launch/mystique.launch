@@ -37,7 +37,9 @@
     </group>
 
     <group ns="sensors/cameras">
-       <include file="$(find ben_hardware)/launch/load_all_panos_params.launch"/>
+       <include file="$(find ben_hardware)/launch/load_all_panos_params.launch">
+        <arg name="namespace" value="$(arg namespace)"/>
+       </include>
     </group>
   </group>
 
