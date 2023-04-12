@@ -1,5 +1,4 @@
 <launch>
-  <node pkg="video_stream_opencv" type="video_stream" name="video_stream_opencv">
-  </node>
-  <include file="$(find opencv_dnn)/launch/yolo4.launch">
+  <node pkg="video_stream_opencv" type="video_stream" name="video_stream_opencv"/>
+  <include file="$(find opencv_dnn)/launch/yolo4.launch"/>
 </launch>
