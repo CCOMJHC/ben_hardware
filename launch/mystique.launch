@@ -36,13 +36,11 @@
       </group>
     </group>
 
-    <group ns="sensors/cameras">
-       <include file="$(find ben_hardware)/launch/load_all_panos_params.launch">
-        <arg name="namespace" value="$(arg namespace)"/>
-       </include>
-    </group>
   </group>
 
+  <include file="$(find ben_hardware)/launch/load_all_panos_params.launch" ns="$(arg namespace)/sensors/cameras">
+    <arg name="namespace" value="$(arg namespace)"/>
+  </include>
 
     <node pkg="posmv" type="posmv_node.py" name="posmv" ns="$(arg namespace)/sensors"/>
 
