@@ -1,38 +1,43 @@
 <launch>
-    <arg name="namespace" default="ben"/>
-    <arg name="operator_ip" default="192.168.100.142"/>
-    <arg name="logDirectory" default="$(find project11)/logs"/>
-    <arg name="log_lidar" default="false"/>
+  <arg name="namespace" default="ben"/>
+  <arg name="operator_ip" default="192.168.100.142"/>
+  <arg name="logDirectory" default="$(find project11)/logs"/>
+  <arg name="log_lidar" default="false"/>
   
-    <include file="$(find ben_project11)/launch/ben_core.launch">
-        <arg name="namespace" value="$(arg namespace)"/>
-    </include>
+  <include file="$(find ben_project11)/launch/ben_core.launch">
+      <arg name="namespace" value="$(arg namespace)"/>
+  </include>
     
-    <node pkg="cw4_helm" type="cw4_helm_node" name="asv_helm" ns="$(arg namespace)"/>
+  <node pkg="cw4_helm" type="cw4_helm_node" name="asv_helm" ns="$(arg namespace)"/>
     
-    <node pkg="control_by_web_x4xx_interface" type="cbw_x4xx_node.py" name="control_by_web_x4xx_interface" ns="$(arg namespace)"/>
+  <node pkg="control_by_web_x4xx_interface" type="cbw_x4xx_node.py" name="control_by_web_x4xx_interface" ns="$(arg namespace)"/>
 
-    <node pkg="flir" type="flir_node.py" name="flir_engine" ns="$(arg namespace)">
-      <param name="baseURL" value="http://192.168.10.63/"/>
-    </node>
+  <!-- <node pkg="flir" type="flir_node.py" name="flir_engine" ns="$(arg namespace)">
+    <param name="baseURL" value="http://192.168.10.63/"/>
+  </node> -->
 
-
-  <group ns="$(arg namespace)/sensors/radar">
-    <node pkg="halo_radar" type="halo_radar" name="halo_radar">
-      <rosparam param="hostIPs">["192.168.10.112", "192.168.99.112" ]</rosparam>
-      <param name="frameId" value="$(arg namespace)/radar"/>
-    </node>
-
-    <group ns="HaloA">
-      <node pkg="marine_radar_tracker" type="marine_radar_tracker" name="marine_radar_tracker">
-        <param name="map_frame" value="$(arg namespace)/map"/>
-        <remap from="radar_data" to="data"/>
-        <param name="minimum_range" value="10.0"/>
+  <group ns="$(arg namespace)">
+    <group ns="sensors/radar">
+      <node pkg="halo_radar" type="halo_radar" name="halo_radar">
+        <rosparam param="hostIPs">["192.168.10.112", "192.168.99.112" ]</rosparam>
+        <param name="frameId" value="$(arg namespace)/radar"/>
       </node>
 
-      <node pkg="marine_radar_tracker" type="marine_radar_to_pointcloud" name="marine_radar_to_pointcloud">
-        <remap from="radar_data" to="data"/>
-      </node>
+      <group ns="HaloA">
+        <node pkg="marine_radar_tracker" type="marine_radar_tracker" name="marine_radar_tracker">
+          <param name="map_frame" value="$(arg namespace)/map"/>
+          <remap from="radar_data" to="data"/>
+          <param name="minimum_range" value="10.0"/>
+        </node>
+
+        <node pkg="marine_radar_tracker" type="marine_radar_to_pointcloud" name="marine_radar_to_pointcloud">
+          <remap from="radar_data" to="data"/>
+        </node>
+      </group>
+    </group>
+
+    <group ns="sensors/cameras">
+       <include file="$(find ben_hardware)/launch/load_all_panos_params.launch"/>
     </group>
   </group>
 
