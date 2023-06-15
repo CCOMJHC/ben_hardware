@@ -34,8 +34,15 @@
           <remap from="radar_data" to="data"/>
         </node>
       </group>
+    
+      <group ns="HaloB">
+        <node pkg="marine_radar_tracker" type="marine_radar_tracker" name="marine_radar_tracker">
+          <param name="map_frame" value="$(arg namespace)/map"/>
+          <remap from="radar_data" to="data"/>
+          <param name="minimum_range" value="10.0"/>
+        </node>
+      </group>
     </group>
-
   </group>
 
   <include file="$(find ben_hardware)/launch/load_all_panos_params.launch" ns="$(arg namespace)/sensors/cameras">
