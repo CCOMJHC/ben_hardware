@@ -1,7 +1,8 @@
 udp_bridge/remotes:
   robot:
     name: ben
-      connections:
+    connections:
+      default:
         host: mystiquem
         port: 4200
         topics:
