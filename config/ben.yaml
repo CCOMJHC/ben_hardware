@@ -1,7 +1,8 @@
 udp_bridge/maxPacketSize: 1400
 udp_bridge/remotes:
-    operator:
-        host: 192.168.100.195
+  operator:
+    connections:
+      default:
         topics:
           cbw_status: {source: control_by_web_status}
           sensors_flir_engine: {source: sensors/flir_engine}
