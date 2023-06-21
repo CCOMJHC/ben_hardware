@@ -100,9 +100,9 @@
       <remap from="nmea_sentence" to="sensors/nmea_sentence"/>
     </node>
 
-    <include file="$(find ben_hardware)/launch/all_panos_thumbnails.launch">
+    <!-- <include file="$(find ben_hardware)/launch/all_panos_thumbnails.launch">
         <arg name="namespace" value="$(arg namespace)"/>
-    </include>
+    </include> -->
 
     <node pkg="cw4_nmea2000" type="nmea_conv_node.py" name="nmea_conv" ns="$(arg namespace)"/>
 
