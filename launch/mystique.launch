@@ -77,6 +77,10 @@
 
     <node pkg="mbr" type="mbr_logging.py" name="mbr_logging" ns="$(arg namespace)"/>
 
+    <node pkg="teltonika" type="teltonika_node.py" name="teltonika" ns="$(arg namespace)">
+    <param name="ipaddress" value="192.168.100.5"/>
+    </node>
+
     <node pkg="starlink_stats_ros" type="starlink_diagnostics_node.py" name="starlink_diagnostics"/>
 
     <include file="$(find ben_hardware)/launch/loggers.launch">
@@ -110,4 +114,5 @@
     <rosparam command="load" file="$(find ben_hardware)/config/ben.yaml" ns="$(arg namespace)"/>
     <param name="/$(arg namespace)/udp_bridge/remotes/operator/connections/default/host" value="$(arg operator_ip)"/>
     <rosparam command="load" file="$(find ccomjhc_project11)/configuration/mbr.yaml" ns="$(arg namespace)"/>
+    <rosparam command="load" file="$(find ccomjhc_project11)/configuration/teltonika.yaml" ns="$(arg namespace)/teltonika"/>
 </launch>
