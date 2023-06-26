@@ -3,6 +3,7 @@
   <arg name="operator_ip" default="192.168.100.142"/>
   <arg name="logDirectory" default="$(find project11)/logs"/>
   <arg name="log_lidar" default="false"/>
+  <arg name="pano_cameras_stream_id" default="mpeg4"/>
   
   <include file="$(find ben_project11)/launch/ben_core.launch">
       <arg name="namespace" value="$(arg namespace)"/>
@@ -47,6 +48,7 @@
 
   <include file="$(find ben_hardware)/launch/load_all_panos_params.launch" ns="$(arg namespace)/sensors/cameras">
     <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="stream_id" value="$(arg pano_cameras_stream_id)"/>
   </include>
 
     <node pkg="posmv" type="posmv_node.py" name="posmv" ns="$(arg namespace)/sensors"/>
