@@ -34,6 +34,57 @@ udp_bridge/remotes:
           pano_5_camera_info: {source: /sensors/cameras/pano_5/camera_info}
           pano_6_detections: {source: /sensors/cameras/pano_6/yolo4/detections}
           pano_6_camera_info: {source: /sensors/cameras/pano_6/camera_info}
+          halo_a_grid: {source: sensors/radar/HaloA/grid_map}
+          halo_b_grid: {source: sensors/radar/HaloB/grid_map}
+          sensors_cameras_pano_1_yolo4_detections: {source: sensors/cameras/pano_1/yolo4/detections}
+          sensors_cameras_pano_2_yolo4_detections: {source: sensors/cameras/pano_2/yolo4/detections}
+          sensors_cameras_pano_3_yolo4_detections: {source: sensors/cameras/pano_3/yolo4/detections}
+          sensors_cameras_pano_4_yolo4_detections: {source: sensors/cameras/pano_4/yolo4/detections}
+          sensors_cameras_pano_5_yolo4_detections: {source: sensors/cameras/pano_5/yolo4/detections}
+          sensors_cameras_pano_6_yolo4_detections: {source: sensors/cameras/pano_6/yolo4/detections}
+          sensors_cameras_pano_1_camera_info: {source: sensors/cameras/pano_1/camera_info}
+          sensors_cameras_pano_2_camera_info: {source: sensors/cameras/pano_2/camera_info}
+          sensors_cameras_pano_3_camera_info: {source: sensors/cameras/pano_3/camera_info}
+          sensors_cameras_pano_4_camera_info: {source: sensors/cameras/pano_4/camera_info}
+          sensors_cameras_pano_5_camera_info: {source: sensors/cameras/pano_5/camera_info}
+          sensors_cameras_pano_6_camera_info: {source: sensors/cameras/pano_6/camera_info}
+          sensors_lidar_costmap: {source: sensors/lidar/projected_map}
+      vpn:
+        host: 192.168.50.142
+        port: 4200
+        topics:
+          halo_a_grid: {source: sensors/radar/HaloA/grid_map}
+          nav_visualization_markers: {source: navigator/visualization_markers}
+          odom: {source: project11/odom}
+          project11_heartbeat: {source: project11/heartbeat}
+          project11_status_mission_manager: {source: project11/status/mission_manager}
+          project11_response: {source: project11/response}
+          diagnostics: {source: /diagnostics}
+          tf: {source: /tf}
+          tf_static: {source: /tf_static}
+          sensors_radar_HaloA_state: {source: sensors/radar/HaloA/state}
+          sensors_radar_HaloB_state: {source: sensors/radar/HaloB/state}
+          posmv_position: {source: sensors/posmv/position}
+          posmv_orientation: {source: sensors/posmv/orientation}
+          posmv_velocity: {source: sensors/posmv/velocity}
+          oem_position: {source: sensors/oem/position}
+          oem_orientation: {source: sensors/oem/orientation}
+          oem_velocity: {source: sensors/oem/velocity}
+      wifi:
+        host: salmonw
+        port: 4200
+        topics:
+          nav_visualization_markers: {source: navigator/visualization_markers}
+          project11_heartbeat: {source: project11/heartbeat}
+          project11_status_mission_manager: {source: project11/status/mission_manager}
+          project11_response: {source: project11/response}
+          posmv_position: {source: sensors/posmv/position}
+          posmv_orientation: {source: sensors/posmv/orientation}
+          posmv_velocity: {source: sensors/posmv/velocity}
+          oem_position: {source: sensors/oem/position}
+          oem_orientation: {source: sensors/oem/orientation}
+          oem_velocity: {source: sensors/oem/velocity}
+
 
 mbr_node/radioSerialNumbers: [2510, 9442]
 
