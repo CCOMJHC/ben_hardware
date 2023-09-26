@@ -8,6 +8,16 @@
   <include file="$(find ben_project11)/launch/ben_core.launch">
       <arg name="namespace" value="$(arg namespace)"/>
   </include>
+
+  <include file="$(find project11)/launch/platform_nav_source.launch">
+    <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="nav_source" value="posmv"/>
+  </include>
+
+  <include file="$(find project11)/launch/platform_nav_source.launch">
+    <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="nav_source" value="oem"/>
+  </include>
     
   <node pkg="cw4_helm" type="cw4_helm_node" name="asv_helm" ns="$(arg namespace)"/>
     
