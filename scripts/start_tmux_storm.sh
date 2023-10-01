@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p /home/field/project11/log/
-LOG_FILE=/home/field/project11/log/start_tmux.txt
+mkdir -p /home/field/project11/logs/
+LOG_FILE=/home/field/project11/logs/start_tmux.txt
 
 echo "" >> ${LOG_FILE}
 echo "#############################################" >> ${LOG_FILE}
