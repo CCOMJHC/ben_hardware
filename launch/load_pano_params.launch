@@ -2,7 +2,7 @@
   <arg name="namespace"/>
   <arg name="camera_number"/>
   <arg name="camera_ip"/>
-  <arg name="stream_id" default="11">
+  <arg name="stream_id" default="mpeg4"/>
 
   <group ns="pano_$(arg camera_number)">
     <rosparam command="load" file="$(find ben_hardware)/config/pano_camera.yaml"/>

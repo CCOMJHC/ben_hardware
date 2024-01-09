@@ -1,6 +1,6 @@
 <launch>
   <arg name="namespace"/>
-  <arg name="stream_number" default="11">
+  <arg name="stream_number" default="mpeg4"/>
 
   <include file="$(find ben_hardware)/launch/load_pano_params.launch">
     <arg name="camera_number" value="1"/>

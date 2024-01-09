@@ -50,7 +50,7 @@ udp_bridge/remotes:
           sensors_cameras_pano_6_camera_info: {source: sensors/cameras/pano_6/camera_info}
           sensors_lidar_costmap: {source: sensors/lidar/projected_map}
       vpn:
-        host: 192.168.50.142
+        host: salmonv
         port: 4200
         topics:
           halo_a_grid: {source: sensors/radar/HaloA/grid_map}
