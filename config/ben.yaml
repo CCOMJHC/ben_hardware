@@ -55,7 +55,7 @@ udp_bridge/remotes:
         topics:
           halo_a_grid: {source: sensors/radar/HaloA/grid_map}
           nav_visualization_markers: {source: navigator/visualization_markers}
-          odom: {source: project11/odom}
+          odom: {source: odom}
           project11_heartbeat: {source: project11/heartbeat}
           project11_status_mission_manager: {source: project11/status/mission_manager}
           project11_response: {source: project11/response}
