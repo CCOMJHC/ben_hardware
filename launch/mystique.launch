@@ -28,30 +28,39 @@
   </node> -->
 
   <group ns="$(arg namespace)">
-    <group ns="sensors/radar">
-      <node pkg="halo_radar" type="halo_radar" name="halo_radar">
-        <rosparam param="hostIPs">["192.168.10.112", "192.168.99.112" ]</rosparam>
-        <param name="frameId" value="$(arg namespace)/radar"/>
+    <group ns="sensors">
+      <node pkg="marine_ais_tools" type="nmea_relay.py" name="cortex_nmea" ns="cortex">
+        <param name="input_type" value="tcp"/>
+        <param name="input_address" value="cortex"/>
+        <param name="input_port" value="39150"/>
       </node>
 
-      <group ns="HaloA">
-        <node pkg="marine_radar_tracker" type="marine_radar_tracker" name="marine_radar_tracker">
-          <param name="map_frame" value="$(arg namespace)/map"/>
-          <remap from="radar_data" to="data"/>
-          <param name="minimum_range" value="10.0"/>
+
+      <group ns="radar">
+        <node pkg="halo_radar" type="halo_radar" name="halo_radar">
+          <rosparam param="hostIPs">["192.168.10.112", "192.168.99.112" ]</rosparam>
+          <param name="frameId" value="$(arg namespace)/radar"/>
         </node>
 
-        <node pkg="marine_radar_tracker" type="marine_radar_to_pointcloud" name="marine_radar_to_pointcloud">
-          <remap from="radar_data" to="data"/>
-        </node>
-      </group>
-    
-      <group ns="HaloB">
-        <node pkg="marine_radar_tracker" type="marine_radar_tracker" name="marine_radar_tracker">
-          <param name="map_frame" value="$(arg namespace)/map"/>
-          <remap from="radar_data" to="data"/>
-          <param name="minimum_range" value="10.0"/>
-        </node>
+        <group ns="HaloA">
+          <node pkg="marine_radar_tracker" type="marine_radar_tracker" name="marine_radar_tracker">
+            <param name="map_frame" value="$(arg namespace)/map"/>
+            <remap from="radar_data" to="data"/>
+            <param name="minimum_range" value="10.0"/>
+          </node>
+
+          <node pkg="marine_radar_tracker" type="marine_radar_to_pointcloud" name="marine_radar_to_pointcloud">
+            <remap from="radar_data" to="data"/>
+          </node>
+        </group>
+      
+        <group ns="HaloB">
+          <node pkg="marine_radar_tracker" type="marine_radar_tracker" name="marine_radar_tracker">
+            <param name="map_frame" value="$(arg namespace)/map"/>
+            <remap from="radar_data" to="data"/>
+            <param name="minimum_range" value="10.0"/>
+          </node>
+        </group>
       </group>
     </group>
   </group>
@@ -115,6 +124,7 @@
       <param name="baud" value="38400"/>
       <remap from="nmea_sentence" to="sensors/nmea_sentence"/>
     </node>
+
 
     <!-- <include file="$(find ben_hardware)/launch/all_panos_thumbnails.launch">
         <arg name="namespace" value="$(arg namespace)"/>
