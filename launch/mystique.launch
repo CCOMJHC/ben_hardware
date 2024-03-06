@@ -28,6 +28,13 @@
   </node> -->
 
   <group ns="$(arg namespace)">
+
+    <node pkg="garmin_cortex_driver" type="garmin_cortex" name="cortex"/>
+
+    <group ns="cortex">
+      <node pkg="marine_radio_tools" type="send_text_service" name="text_to_audio"/>
+    </group>
+
     <group ns="sensors">
       <node pkg="marine_ais_tools" type="nmea_relay.py" name="cortex_nmea" ns="cortex">
         <param name="input_type" value="tcp"/>
