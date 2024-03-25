@@ -32,7 +32,10 @@
     <node pkg="garmin_cortex_driver" type="garmin_cortex" name="cortex"/>
 
     <group ns="cortex">
-      <node pkg="marine_radio_tools" type="send_text_service" name="text_to_audio"/>
+      <node pkg="marine_radio_tools" type="send_text_service" name="text_to_vhf"/>
+      <node pkg="marine_radio_tools" type="send_text_service" name="text_to_hailer">
+        <param name="transmit_audio_service" value="hailer_audio"/>
+      </node>
     </group>
 
     <group ns="sensors">
