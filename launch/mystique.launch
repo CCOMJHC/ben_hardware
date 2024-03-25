@@ -28,12 +28,27 @@
   </node> -->
 
   <group ns="$(arg namespace)">
+
+    <node pkg="garmin_cortex_driver" type="garmin_cortex" name="cortex"/>
+
+    <group ns="cortex">
+      <node pkg="marine_radio_tools" type="send_text_service" name="text_to_audio"/>
+    </group>
+
     <group ns="sensors">
-      <node pkg="marine_ais_tools" type="nmea_relay.py" name="cortex_nmea" ns="cortex">
-        <param name="input_type" value="tcp"/>
-        <param name="input_address" value="cortex"/>
-        <param name="input_port" value="39150"/>
-      </node>
+
+      <group ns="cortex">
+
+        <node pkg="marine_ais_tools" type="nmea_relay.py" name="cortex_nmea">
+          <param name="input_type" value="tcp"/>
+          <param name="input_address" value="cortex"/>
+          <param name="input_port" value="39150"/>
+        </node>
+
+        <node pkg="marine_ais_tools" type="ais_parser.py" name="ais_parser"/>
+        <node pkg="marine_ais_tools" type="ais_contact_tracker.py" name="ais_contacts"/>
+
+      </group>
 
 
       <group ns="radar">
@@ -79,6 +94,7 @@
     <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar">
       <arg name="frame_id" value="$(arg namespace)/lidar"/>
       <arg name="manager" value="$(arg namespace)_lidar_nodelet_manager"/>
+      <arg name="device_ip" value="192.168.10.15"/>
     </include>
 
     <node pkg="pointcloud2_spherical_filter" type="pointcloud2_spherical_filter_node" name="sperical_filter" ns="$(arg namespace)/sensors/lidar"> 
@@ -99,7 +115,7 @@
     <node pkg="mbr" type="mbr_logging.py" name="mbr_logging" ns="$(arg namespace)"/>
 
     <node pkg="teltonika" type="teltonika_node.py" name="teltonika" ns="$(arg namespace)">
-    <param name="ipaddress" value="192.168.100.5"/>
+    <param name="ipaddress" value="192.168.10.1"/>
     </node>
 
     <node pkg="starlink_stats_ros" type="starlink_diagnostics_node.py" name="starlink_diagnostics"/>

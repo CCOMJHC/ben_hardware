@@ -90,3 +90,5 @@ mbr_node/radioSerialNumbers: [2510, 9442]
 
 sonar/model: 2040
 sonar/host: stormi
+
+cortex/ip_address: 192.168.10.242
