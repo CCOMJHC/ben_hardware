@@ -4,37 +4,37 @@
 
   <include file="$(find ben_hardware)/launch/load_pano_params.launch">
     <arg name="camera_number" value="1"/>
-    <arg name="camera_ip" value="192.168.100.207"/>
+    <arg name="camera_ip" value="192.168.10.207"/>
     <arg name="namespace" value="$(arg namespace)"/>
     <arg name="stream_number" value="$(arg stream_number)"/>
   </include>
   <include file="$(find ben_hardware)/launch/load_pano_params.launch">
     <arg name="camera_number" value="2"/>
-    <arg name="camera_ip" value="192.168.100.208"/>
+    <arg name="camera_ip" value="192.168.10.208"/>
     <arg name="namespace" value="$(arg namespace)"/>
     <arg name="stream_number" value="$(arg stream_number)"/>
   </include>
   <include file="$(find ben_hardware)/launch/load_pano_params.launch">
     <arg name="camera_number" value="3"/>
-    <arg name="camera_ip" value="192.168.100.209"/>
+    <arg name="camera_ip" value="192.168.10.209"/>
     <arg name="namespace" value="$(arg namespace)"/>
     <arg name="stream_number" value="$(arg stream_number)"/>
   </include>
   <include file="$(find ben_hardware)/launch/load_pano_params.launch">
     <arg name="camera_number" value="4"/>
-    <arg name="camera_ip" value="192.168.100.210"/>
+    <arg name="camera_ip" value="192.168.10.210"/>
     <arg name="namespace" value="$(arg namespace)"/>
     <arg name="stream_number" value="$(arg stream_number)"/>
   </include>
   <include file="$(find ben_hardware)/launch/load_pano_params.launch">
     <arg name="camera_number" value="5"/>
-    <arg name="camera_ip" value="192.168.100.211"/>
+    <arg name="camera_ip" value="192.168.10.211"/>
     <arg name="namespace" value="$(arg namespace)"/>
     <arg name="stream_number" value="$(arg stream_number)"/>
   </include>
   <include file="$(find ben_hardware)/launch/load_pano_params.launch">
     <arg name="camera_number" value="6"/>
-    <arg name="camera_ip" value="192.168.100.212"/>
+    <arg name="camera_ip" value="192.168.10.212"/>
     <arg name="namespace" value="$(arg namespace)"/>
     <arg name="stream_number" value="$(arg stream_number)"/>
   </include>
