@@ -3,8 +3,8 @@
 # called from cron @reboot using field's user crontab
 # inspired by: https://answers.ros.org/question/140426/issues-launching-ros-on-startup/
 
-mkdir -p /home/field/project11/log/
-LOG_FILE=/home/field/project11/log/autostart.txt
+mkdir -p /home/field/project11/logs/
+LOG_FILE=/home/field/project11/logs/autostart.txt
 
 echo "" >> ${LOG_FILE}
 echo "#############################################" >> ${LOG_FILE}
