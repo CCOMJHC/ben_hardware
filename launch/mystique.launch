@@ -3,9 +3,20 @@
   <arg name="operator_ip" default="192.168.100.142"/>
   <arg name="logDirectory" default="$(find project11)/logs"/>
   <arg name="log_lidar" default="false"/>
+  <arg name="pano_cameras_stream_id" default="mpeg4"/>
   
   <include file="$(find ben_project11)/launch/ben_core.launch">
       <arg name="namespace" value="$(arg namespace)"/>
+  </include>
+
+  <include file="$(find project11)/launch/platform_nav_source.launch">
+    <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="nav_source" value="posmv"/>
+  </include>
+
+  <include file="$(find project11)/launch/platform_nav_source.launch">
+    <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="nav_source" value="oem"/>
   </include>
     
   <node pkg="cw4_helm" type="cw4_helm_node" name="asv_helm" ns="$(arg namespace)"/>
@@ -17,29 +28,64 @@
   </node> -->
 
   <group ns="$(arg namespace)">
-    <group ns="sensors/radar">
-      <node pkg="halo_radar" type="halo_radar" name="halo_radar">
-        <rosparam param="hostIPs">["192.168.10.112", "192.168.99.112" ]</rosparam>
-        <param name="frameId" value="$(arg namespace)/radar"/>
+
+    <node pkg="garmin_cortex_driver" type="garmin_cortex" name="cortex"/>
+
+    <group ns="cortex">
+      <node pkg="marine_radio_tools" type="send_text_service" name="text_to_vhf"/>
+      <node pkg="marine_radio_tools" type="send_text_service" name="text_to_hailer">
+        <param name="transmit_audio_service" value="hailer_audio"/>
       </node>
-
-      <group ns="HaloA">
-        <node pkg="marine_radar_tracker" type="marine_radar_tracker" name="marine_radar_tracker">
-          <param name="map_frame" value="$(arg namespace)/map"/>
-          <remap from="radar_data" to="data"/>
-          <param name="minimum_range" value="10.0"/>
-        </node>
-
-        <node pkg="marine_radar_tracker" type="marine_radar_to_pointcloud" name="marine_radar_to_pointcloud">
-          <remap from="radar_data" to="data"/>
-        </node>
-      </group>
     </group>
 
+    <group ns="sensors">
+
+      <group ns="cortex">
+
+        <node pkg="marine_ais_tools" type="nmea_relay.py" name="cortex_nmea">
+          <param name="input_type" value="tcp"/>
+          <param name="input_address" value="cortex"/>
+          <param name="input_port" value="39150"/>
+        </node>
+
+        <node pkg="marine_ais_tools" type="ais_parser.py" name="ais_parser"/>
+        <node pkg="marine_ais_tools" type="ais_contact_tracker.py" name="ais_contacts"/>
+
+      </group>
+
+
+      <group ns="radar">
+        <node pkg="halo_radar" type="halo_radar" name="halo_radar">
+          <rosparam param="hostIPs">["192.168.10.112", "192.168.99.112" ]</rosparam>
+          <param name="frameId" value="$(arg namespace)/radar"/>
+        </node>
+
+        <group ns="HaloA">
+          <node pkg="marine_radar_tracker" type="marine_radar_tracker" name="marine_radar_tracker">
+            <param name="map_frame" value="$(arg namespace)/map"/>
+            <remap from="radar_data" to="data"/>
+            <param name="minimum_range" value="10.0"/>
+          </node>
+
+          <node pkg="marine_radar_tracker" type="marine_radar_to_pointcloud" name="marine_radar_to_pointcloud">
+            <remap from="radar_data" to="data"/>
+          </node>
+        </group>
+      
+        <group ns="HaloB">
+          <node pkg="marine_radar_tracker" type="marine_radar_tracker" name="marine_radar_tracker">
+            <param name="map_frame" value="$(arg namespace)/map"/>
+            <remap from="radar_data" to="data"/>
+            <param name="minimum_range" value="10.0"/>
+          </node>
+        </group>
+      </group>
+    </group>
   </group>
 
   <include file="$(find ben_hardware)/launch/load_all_panos_params.launch" ns="$(arg namespace)/sensors/cameras">
     <arg name="namespace" value="$(arg namespace)"/>
+    <arg name="stream_id" value="$(arg pano_cameras_stream_id)"/>
   </include>
 
     <node pkg="posmv" type="posmv_node.py" name="posmv" ns="$(arg namespace)/sensors"/>
@@ -51,6 +97,7 @@
     <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" ns="$(arg namespace)/sensors/lidar">
       <arg name="frame_id" value="$(arg namespace)/lidar"/>
       <arg name="manager" value="$(arg namespace)_lidar_nodelet_manager"/>
+      <arg name="device_ip" value="192.168.10.15"/>
     </include>
 
     <node pkg="pointcloud2_spherical_filter" type="pointcloud2_spherical_filter_node" name="sperical_filter" ns="$(arg namespace)/sensors/lidar"> 
@@ -69,6 +116,10 @@
     </node>
 
     <node pkg="mbr" type="mbr_logging.py" name="mbr_logging" ns="$(arg namespace)"/>
+
+    <node pkg="teltonika" type="teltonika_node.py" name="teltonika" ns="$(arg namespace)">
+    <param name="ipaddress" value="192.168.10.1"/>
+    </node>
 
     <node pkg="starlink_stats_ros" type="starlink_diagnostics_node.py" name="starlink_diagnostics"/>
 
@@ -93,14 +144,16 @@
       <remap from="nmea_sentence" to="sensors/nmea_sentence"/>
     </node>
 
-    <include file="$(find ben_hardware)/launch/all_panos_thumbnails.launch">
+
+    <!-- <include file="$(find ben_hardware)/launch/all_panos_thumbnails.launch">
         <arg name="namespace" value="$(arg namespace)"/>
-    </include>
+    </include> -->
 
     <node pkg="cw4_nmea2000" type="nmea_conv_node.py" name="nmea_conv" ns="$(arg namespace)"/>
 
     <rosparam command="load" file="$(find ben_project11)/config/ben.yaml" ns="$(arg namespace)"/>
     <rosparam command="load" file="$(find ben_hardware)/config/ben.yaml" ns="$(arg namespace)"/>
-    <param name="/$(arg namespace)/udp_bridge/remotes/operator/host" value="$(arg operator_ip)"/>
+    <param name="/$(arg namespace)/udp_bridge/remotes/operator/connections/default/host" value="$(arg operator_ip)"/>
     <rosparam command="load" file="$(find ccomjhc_project11)/configuration/mbr.yaml" ns="$(arg namespace)"/>
+    <rosparam command="load" file="$(find ccomjhc_project11)/configuration/teltonika.yaml" ns="$(arg namespace)/teltonika"/>
 </launch>

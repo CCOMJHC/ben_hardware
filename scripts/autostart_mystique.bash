@@ -5,7 +5,7 @@
 
 DAY=$(date "+%Y-%m-%d")
 NOW=$(date "+%Y-%m-%dT%H.%M.%S.%N")
-LOGDIR="/home/field/project11/logs/${DAY}"
+LOGDIR="/home/field/project11/logs"
 mkdir -p "$LOGDIR"
 LOG_FILE="${LOGDIR}/autostart_${NOW}.txt"
 
@@ -39,6 +39,6 @@ sleep 10
 /usr/bin/tmux new -d -s roscore roscore
 
 /usr/bin/tmux new -d -s project11 
-/usr/bin/tmux send-keys "rosrun rosmon rosmon --name=rosmon_ben_mystique ben_hardware mystique.launch logDirectory:=${LOGDIR} operator_ip:=192.168.100.142" C-m
+/usr/bin/tmux send-keys "rosrun rosmon rosmon --name=rosmon_ben_mystique ben_hardware mystique.launch logDirectory:=${LOGDIR} operator_ip:=salmonm" C-m
 
 } >> "${LOG_FILE}" 2>&1

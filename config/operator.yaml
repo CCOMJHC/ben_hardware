@@ -1,9 +1,30 @@
 udp_bridge/remotes:
-    robot:
-        name: ben
+  robot:
+    name: ben
+    connections:
+      default:
         host: mystiquem
         port: 4200
         topics:
           sensors_radar_HaloA_change_state: {source: /ben/sensors/radar/HaloA/change_state}
           sensors_radar_HaloB_change_state: {source: /ben/sensors/radar/HaloB/change_state}
+      vpn:
+        host: mystiquev
+        port: 4200
+        returnHost: salmon
+        returnPort: 4200
+        maxPacketSize: 1200
+        topics:
+          project11_command: {source: project11/command}
+          piloting_mode_manual_helm: {source: project11/piloting_mode/manual/helm}
+      wifi:
+        host: mystiquew
+        port: 4200
+        returnHost: salmonw
+        returnPort: 4200
+        maxPacketSize: 1200
+        topics:
+          project11_command: {source: project11/command}
+          piloting_mode_manual_helm: {source: project11/piloting_mode/manual/helm}
+
 mbr_node/radioSerialNumbers: [2510, 9442]
