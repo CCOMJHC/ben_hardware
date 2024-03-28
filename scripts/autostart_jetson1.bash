@@ -35,6 +35,6 @@ export ROS_MASTER_URI=http://192.168.10.112:11311
 
 echo "running tmux..."
 
-/usr/bin/tmux new -d -s project11 rosrun rosmon rosmon --name=rosmon_ben_jetson1 ben_hardware jetson1.launch
+/usr/bin/tmux new -d -s project11 rosrun rosmon rosmon --name=rosmon_ben_jetson1 ben_hardware jetson1.launch jetsonStats:=false
 
 } >> "${LOG_FILE}" 2>&1
