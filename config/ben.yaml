@@ -48,7 +48,8 @@ udp_bridge/remotes:
           sensors_cameras_pano_4_camera_info: {source: sensors/cameras/pano_4/camera_info}
           sensors_cameras_pano_5_camera_info: {source: sensors/cameras/pano_5/camera_info}
           sensors_cameras_pano_6_camera_info: {source: sensors/cameras/pano_6/camera_info}
-          sensors_lidar_costmap: {source: sensors/lidar/projected_map}
+          sensors_lidar_costmap: {source: sensors/lidar/lidar_costmap/costmap/costmap}
+          sensors_lidar_costmap_updates: {source: sensors/lidar/lidar_costmap/costmap/costmap_updates}
       vpn:
         host: salmonv
         port: 4200

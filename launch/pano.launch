@@ -1,6 +1,8 @@
 <launch>
   <node pkg="video_stream_opencv" type="video_stream" name="video_stream_opencv"/>
   <remap from="image" to="image_raw"/>
-  <include file="$(find opencv_dnn)/launch/yolo4.launch">
-  </include>
+  <node pkg="opencv_dnn" type="opencv_dnn_node" name="yolo5">
+    <param name="model" value="$(find opencv_dnn)/config/yolov5x.onnx"/>
+    <param name="detections_parser" value="opencv_dnn::YOLOv5Parser"/>
+  </node>
 </launch>

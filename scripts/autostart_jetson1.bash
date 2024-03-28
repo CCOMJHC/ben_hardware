@@ -19,23 +19,22 @@ echo "#############################################"
 echo ""
 echo "Logs:"
 
-#source /opt/ros/melodic/setup.bash
-source /home/field/ros_ws/install_isolated/setup.bash
+source /opt/ros/noetic/setup.bash
 source /home/field/project11/catkin_ws/devel/setup.bash
 
 set -v
 
-while ! ping -c 1 -W 1 jetson1c; do
+while ! ping -c 1 -W 1 jetson1; do
     echo "Waiting for ping to jetson..."
     sleep 1
 done
 
 export ROS_WORKSPACE=/home/field/project11/catkin_ws
-export ROS_IP=192.168.100.114
-export ROS_MASTER_URI=http://192.168.100.112:11311
+export ROS_IP=192.168.10.113
+export ROS_MASTER_URI=http://192.168.10.112:11311
 
 echo "running tmux..."
 
-/usr/bin/tmux new -d -s project11 rosrun rosmon rosmon --name=rosmon_ben_jetson1 ben_hardware jetson1.launch
+/usr/bin/tmux new -d -s project11 rosrun rosmon rosmon --name=rosmon_ben_jetson1 ben_hardware jetson1.launch jetsonStats:=false
 
 } >> "${LOG_FILE}" 2>&1
