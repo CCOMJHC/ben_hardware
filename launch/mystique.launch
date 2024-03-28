@@ -106,11 +106,15 @@
       <remap from="output" to="velodyne_points_filtered"/>
     </node>
 
-    <node pkg="octomap_server" type="octomap_server_node" name="octomap_server" ns="$(arg namespace)/sensors/lidar">
+    <node pkg="costmap_2d" type="costmap_2d_node" name="lidar_costmap" ns="$(arg namespace)/sensors/lidar">
+      <rosparam command="load" file="$(find ben_project11)/config/costmap.yaml" ns="costmap"/>
+    </node>
+
+    <!-- <node pkg="octomap_server" type="octomap_server_node" name="octomap_server" ns="$(arg namespace)/sensors/lidar">
       <remap from="cloud_in" to="velodyne_points_filtered"/>
       <param name="resolution" value="1.0"/>
       <param name="frame_id" value="$(arg namespace)/map"/>
-    </node>
+    </node> -->
 
     <node pkg="libsensors_monitor" type="libsensors_monitor" name="mystique_monitoring" ns="$(arg namespace)">
     </node>
@@ -118,7 +122,7 @@
     <node pkg="mbr" type="mbr_logging.py" name="mbr_logging" ns="$(arg namespace)"/>
 
     <node pkg="teltonika" type="teltonika_node.py" name="teltonika" ns="$(arg namespace)">
-    <param name="ipaddress" value="192.168.10.1"/>
+      <param name="ipaddress" value="192.168.10.1"/>
     </node>
 
     <node pkg="starlink_stats_ros" type="starlink_diagnostics_node.py" name="starlink_diagnostics"/>
@@ -129,13 +133,13 @@
     </include>
     
     <include file="$(find ben_project11)/launch/log_throttled_panos.launch">
-        <arg name="namespace" value="$(arg namespace)"/>
-        <arg name="logDirectory" value="$(arg logDirectory)"/>
+      <arg name="namespace" value="$(arg namespace)"/>
+      <arg name="logDirectory" value="$(arg logDirectory)"/>
     </include>
 
     <include if="$(arg log_lidar)" file="$(find ben_project11)/launch/log_lidar.launch">
-        <arg name="namespace" value="$(arg namespace)"/>
-        <arg name="logDirectory" value="$(arg logDirectory)"/>
+      <arg name="namespace" value="$(arg namespace)"/>
+      <arg name="logDirectory" value="$(arg logDirectory)"/>
     </include>
     
     <node pkg="nmea_navsat_driver" type="nmea_topic_serial_reader" name="nmea_reader" ns="$(arg namespace)">
