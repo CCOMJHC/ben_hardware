@@ -98,6 +98,7 @@
       <arg name="frame_id" value="$(arg namespace)/lidar"/>
       <arg name="manager" value="$(arg namespace)_lidar_nodelet_manager"/>
       <arg name="device_ip" value="192.168.10.15"/>
+      <arg name="rpm" value="300"/>
     </include>
 
     <node pkg="pointcloud2_spherical_filter" type="pointcloud2_spherical_filter_node" name="sperical_filter" ns="$(arg namespace)/sensors/lidar"> 
